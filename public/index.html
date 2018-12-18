@@ -4,25 +4,35 @@
 <head>
 <title>California Reservoirs</title>
 <link rel='stylesheet' href='style/style.css' />
+<link rel='stylesheet' href='style/map.css' />
 <link href="https://fonts.googleapis.com/css?family=Roboto:100|Open+Sans:300|Lato:100|Nova+Mono" rel="stylesheet">
 </head>
 
 <body>
-<div id="title" class="panel fader">
+<div id="title">
     <div class="opacity-screen-2"></div>
     <div id="title-div">
         <h1>Resilient Renewables</h1>
         <h2>DESIGNING CALIFORNIA'S NEW POWER GRID</h2>
-        <p>California’s commitment to 100% carbon-neutral energy requires careful
-          placement of new energy resources. Researchers have created a tool to
-          test the resiliency of future energy grid plans.</p>
+        <p>Insert awesome sentence or two to introduce the article here!</p>
     </div>
 </div>
-<divlass="panel fader">
+<div class="panel">
+  <p>Hey y'all, here's a rough map. I think at the moment we're plotting a LOT of
+  nodes on top of each other (haven't really looked into it yet though). Filtered
+  to the nodes with >15 total production as per Ale's suggestion. Mouseover is
+  probably not a feature we actually want but put it in for now so we can investigate
+  particular nodes.</p>
+  <svg id='map' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
 
+  </svg>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src='//d3js.org/d3.v3.min.js' charset='utf-8'></script>
+<script src='js/d3.v3.min.js' charset='utf-8'></script>
+<script src='js/map-constants.js'></script>
+<script src='js/energy-map.js'></script>
+<script src='js/ca-map.js'></script>
+<script src='js/article.js'></script>
 </body>
 </html>

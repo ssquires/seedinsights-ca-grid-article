@@ -9,8 +9,11 @@ body {
 
 .panel {
     height: 100vh;
-    opacity: 0;
     background-color: white;
+    padding-top: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 100px;
 }
 
 #title {

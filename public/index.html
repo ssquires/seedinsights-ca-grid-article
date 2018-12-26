@@ -2,9 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>California Reservoirs</title>
+<title>Resilient Renewables: Designing California's New Power Grid</title>
 <link rel='stylesheet' href='style/style.css' />
 <link rel='stylesheet' href='style/map.css' />
+<link rel='stylesheet' href='style/pie.css' />
 <link href="https://fonts.googleapis.com/css?family=Roboto:100|Open+Sans:300|Lato:100|Nova+Mono" rel="stylesheet">
 </head>
 
@@ -18,6 +19,10 @@
     </div>
 </div>
 <div class="panel">
+  <svg id='pie-present' width='300' height='350'>
+  </svg>
+  <svg id='pie-future' width='300' height='350'>
+  </svg>
   <p>Hey y'all, here's a rough map. I think at the moment we're plotting a LOT of
   nodes on top of each other (haven't really looked into it yet though). Filtered
   to the nodes with >15 total production as per Ale's suggestion. Mouseover is
@@ -33,6 +38,7 @@
 <script src='js/map-constants.js'></script>
 <script src='js/energy-map.js'></script>
 <script src='js/ca-map.js'></script>
+<script src='js/pie-charts.js'></script>
 <script src='js/article.js'></script>
 </body>
 </html>

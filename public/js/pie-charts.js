@@ -1,30 +1,19 @@
-var presentDayData = [
-  {'label': 'natural gas', 'value': 40},
-  {'label': 'solar and wind', 'value': 30},
-  {'label': 'other renewables', 'value': 30}
-];
 
-var futureData = [
-  {'label': 'natural gas', 'value': 10},
-  {'label': 'solar and wind', 'value': 45},
-  {'label': 'other renewables', 'value': 45}
-];
 
-var colors = ['red', 'green', 'blue'];
 
-function makePieChart(svgID, data, caption) {
-  var container = d3.select(svgID).append('svg').data([data]).append('g').attr('transform', 'translate(' + 150 + ',' + 150 + ')');
-;
-  var pie = d3.layout.pie().value(function(d) { return d.value; });
-  var arc = d3.svg.arc().outerRadius(150);
 
-  var slices = container.selectAll('slice')
+function makePieChart(svgID, data, pieColors, caption) {
+  let container = d3.select(svgID).append('svg').data([data]).append('g').attr('transform', 'translate(' + 150 + ',' + 150 + ')');
+  let pie = d3.pie().value(function(d) { return d.value; });
+  let arc = d3.arc().innerRadius(0).outerRadius(150);
+
+  let slices = container.selectAll('slice')
     .data(pie).enter()
     .append('g');
 
   slices.append('path')
-    .attr('fill', function(d, i) { return colors[i] })
-    .attr('d', function(d) { return arc(d) });
+    .attr('fill', function(d, i) { return pieColors[i] })
+    .attr('d', arc);
 
   slices.append('text')
       .attr('transform', function(d){

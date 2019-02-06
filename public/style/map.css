@@ -1,18 +1,3 @@
-.tooltip {
-    position: absolute;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 3px;
-    margin: 0px;
-    opacity: 1;
-}
-
-.tooltip p {
-    font-size: 14px;
-    margin: 0px;
-    padding: 0px;
-}
-
-.tooltip-invisible {
-    opacity: 0;
+#map {
+  background-color: white;
 }

@@ -19,22 +19,25 @@
     </div>
 </div>
 <div class="panel">
-  <svg id='pie-present' width='300' height='350'>
-  </svg>
-  <svg id='pie-future' width='300' height='350'>
-  </svg>
-  <p>Hey y'all, here's a rough map. I think at the moment we're plotting a LOT of
-  nodes on top of each other (haven't really looked into it yet though). Filtered
-  to the nodes with >15 total production as per Ale's suggestion. Mouseover is
-  probably not a feature we actually want but put it in for now so we can investigate
-  particular nodes.</p>
+  <div id='pies'>
+    <svg id='pie-present' width='300' height='350'>
+    </svg>
+    <svg id='pie-future' width='300' height='350'>
+    </svg>
+  </div>
+  <p>Second round of pie charts and added map interactivity.</p>
+  <p>Hover over a node on the map to highlight all nodes of that class.</p>
+  <p>Something to think about: do we want 1 or 2 useful pieces of information
+    to also pop up for each class? Like displaying what percentage of overall
+    energy output that class makes up, or highlighting a couple of the largest
+    power plants?</p>
   <svg id='map' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
 
   </svg>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src='js/d3.v3.min.js' charset='utf-8'></script>
+<script src='js/d3.v5.min.js' charset='utf-8'></script>
 <script src='js/map-constants.js'></script>
 <script src='js/energy-map.js'></script>
 <script src='js/ca-map.js'></script>

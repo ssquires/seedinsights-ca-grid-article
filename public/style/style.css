@@ -8,7 +8,6 @@ body {
 }
 
 .panel {
-    height: 100vh;
     background-color: white;
     padding-top: 100px;
     padding-left: 10%;
@@ -101,42 +100,4 @@ p {
     padding-right: 25%;
     height: 80vh;
     padding-top: 20vh;
-}
-
-.slide-text {
-    position: fixed;
-    top: 20vh;
-    width: 75%;
-    left: 50%;
-    margin-left: -37.5%;
-    transition: opacity 0.2s;
-}
-
-#slide1-graphic-container {
-    display: flex;
-    align-items: center;
-    height: 420px;
-    position: fixed;
-    top: 40vh;
-    margin: auto;
-}
-
-#slide1-graphic {
-    width: 650px;
-    text-align: center;
-    margin: auto;
-}
-
-.bucket {
-    -webkit-transition: 1s;
-    transition: fill 1s ease;
-}
-
-#slide-2 {
-    position: absolute;
-    top: 30vh;
-    width: 700px;
-    left: 50%;
-    margin-left: -350px;
-    color: white;
 }

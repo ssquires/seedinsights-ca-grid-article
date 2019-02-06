@@ -6,3 +6,11 @@
 .pie-caption {
   font-family: 'Open Sans';
 }
+
+#pies {
+  text-align: center;
+}
+
+#pies svg {
+  margin: 30px;
+}

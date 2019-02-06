@@ -9,8 +9,8 @@ const nodeOpacity = '99';
 
 
 const colors = {'.solar': '#FCF65E',
-                '.wind': '#2C90C2',
-                '.renewable': '#68CF6A',
+                '.wind': '#68CF6A',
+                '.renewable': '#00A28A',
                 '.gas': '#BBBBBB',
                 'unselected': '#555'
                }

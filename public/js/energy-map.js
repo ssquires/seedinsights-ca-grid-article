@@ -125,7 +125,7 @@ function unselectClass(className) {
 function makeLegend(svgID, legendX, legendY) {
 	let legend = {'Solar': {'color': colors['.solar'], 'id': 'solar'},
 						'Wind': {'color': colors['.wind'], 'id': 'wind'},
-						'Other Renewables': {'color': colors['.renewable'], 'id': 'renewable'},
+						'Carbon Free': {'color': colors['.renewable'], 'id': 'renewable'},
 					  'Natural Gas': {'color': colors['.gas'], 'id': 'gas'}};
 	let x = legendX, y = legendY
 	for (let source in legend) {

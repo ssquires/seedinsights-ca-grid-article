@@ -24,4 +24,28 @@ $(document).ready(function() {
                 ['9,000', '15,000', '21,000', '28,000'],
                 'Time of Day',
                 'Megawatts');
+  makeLineChart('#natural-gas-curve',
+                'Natural Gas Production',
+                [duckData, gasData],
+                ['black', 'red'],
+                false,
+                [],
+                'Time of Day',
+                'Energy');
+  makeLineChart('#solar-curve',
+                'Solar Production',
+                [duckData, solarData],
+                ['black', 'orange'],
+                false,
+                [],
+                'Time of Day',
+                'Energy');
+  makeLineChart('#wind-curve',
+                'Wind Production',
+                [duckData, windData],
+                ['black', 'blue'],
+                false,
+                [],
+                'Time of Day',
+                'Energy');
 });

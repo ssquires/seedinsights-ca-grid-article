@@ -10,6 +10,42 @@ const duckData = [
   [23.5, 22.5]
 ]
 
+const gasData = [
+  [1, 21.5],
+  [4.8, 19],
+  [8.5, 19.5],
+  [9.5, 19.1],
+  [14.5, 12],
+  [17.5, 13],
+  [20.5, 25],
+  [21, 26.5],
+  [24.5, 22.5]
+]
+
+const solarData = [
+  [0, 9],
+  [3, 9],
+  [6, 9],
+  [8, 10],
+  [10, 15],
+  [15, 18],
+  [18, 10],
+  [20, 9],
+  [24, 9]
+]
+
+const windData = [
+  [0, 10],
+  [3, 18],
+  [6, 11],
+  [9, 19],
+  [12, 10],
+  [15, 18],
+  [18, 10],
+  [21, 19],
+  [24, 10]
+];
+
 const xLabels = ['12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm'];
 
 
@@ -58,9 +94,13 @@ function makeLineChart(containerID,
     .html(yAxisTitle)
     .attr('font-size', 16)
     .attr('font-family', 'Open Sans')
-    .attr('y', '-60')
     .attr('transform', 'rotate(270)');
   let ybbox = yText.node().getBBox();
+  if (yLabels.length > 0) {
+    yText.attr('y', '-60');
+  } else {
+    yText.attr('y', '-10');
+  }
   yText.attr('x', -(xAxisLevel - yLength / 2 + ybbox.width / 2));
 
   // Draw x axis
@@ -123,15 +163,17 @@ function makeLineChart(containerID,
   for (let j = 0; j < dataset.length; j++) {
     let data = dataset[j];
     let fillColor = dataColors[j];
+
+    curveData = []
+
     // Scale data to chart size
     for (let dataPoint of data) {
       dataX = (dataPoint[0] / (xEnd - xStart)) * xLength + yAxisLevel;
       dataY = xAxisLevel - yLength * ((dataPoint[1] - yStart) / (yEnd - yStart));
-      dataPoint[0] = dataX;
-      dataPoint[1] = dataY;
+      curveData.push([dataX, dataY]);
     }
     let makeCurve = d3.line().curve(d3.curveCatmullRom);
-    let path = makeCurve(data);
+    let path = makeCurve(curveData);
     chart.append('path').attr('d', path)
       .attr('fill', 'none')
       .attr('stroke', fillColor)

@@ -1,5 +1,5 @@
 function drawMaps() {
-  var data = d3.json('california.json').then(function (data) {
+  let data = d3.json('california.json').then(function (data) {
     // Path Generator to draw regions on map
     let path = d3.geoPath().projection(projection);
 
@@ -14,10 +14,4 @@ function drawMaps() {
     makeNodes('#map');
     makeLegend('#map', 160, 50);
   });
-}
-
-
-function makeMap(svgID, data) {
-
-
 }

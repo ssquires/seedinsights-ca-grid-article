@@ -6,6 +6,7 @@
 <link rel='stylesheet' href='style/style.css' />
 <link rel='stylesheet' href='style/map.css' />
 <link rel='stylesheet' href='style/pie.css' />
+<link rel='stylesheet' href='style/line-charts.css' />
 <link href="https://fonts.googleapis.com/css?family=Roboto:100|Open+Sans:300|Lato:100|Nova+Mono" rel="stylesheet">
 </head>
 
@@ -25,6 +26,20 @@
     <svg id='pie-future' width='300' height='350'>
     </svg>
   </div>
+  <p>Adding in line charts. The current plan is to have a duck curve plot,
+    then a plot of duck curve vs. solar output, wind output, and natural gas
+    output.</p>
+  <div id='line-charts'>
+    <div id='duck-curve' class='line-chart'>
+    </div>
+    <div id='natural-gas-curve' class='line-chart'
+    </div>
+    <div id='solar-curve' class='line-chart'>
+    </div>
+    <div id='wind-curve' class='line-chart'>
+    </div>
+  </div>
+
   <p>Second round of pie charts and added map interactivity.</p>
   <p>Hover over a node on the map to highlight all nodes of that class.</p>
   <p>Something to think about: do we want 1 or 2 useful pieces of information
@@ -42,6 +57,7 @@
 <script src='js/energy-map.js'></script>
 <script src='js/ca-map.js'></script>
 <script src='js/pie-charts.js'></script>
+<script src='js/line-charts.js'></script>
 <script src='js/article.js'></script>
 </body>
 </html>

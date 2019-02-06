@@ -16,4 +16,12 @@ $(document).ready(function() {
   drawMaps();
   makePieChart('#pie-present', presentDayData, pieColorsNow, '2017 (Natural gas, large hydro/nuclear, and renewable)');
   makePieChart('#pie-future', futureData, pieColorsFuture, '2045 (Renewable vs. carbon neutral)');
+  makeLineChart('#duck-curve',
+                'The Duck Curve',
+                [duckData],
+                ['black'],
+                false,
+                ['9,000', '15,000', '21,000', '28,000'],
+                'Time of Day',
+                'Megawatts');
 });

@@ -1,0 +1,24 @@
+node number,X (longitude),Y (latitude),load,solar,wind,carbon f&n,nor renewables,description
+1,-122.46,40.67,,,300,100,,Redding
+2,-121.496,38.589,-500,,,,,Sacramento
+3,-122.455,37.767,-1000,,,,300,SF
+4,-121.91,37.35,-400,,,,,San Jose
+5,-121.320632,37.954293,-300,,,,,Stockhon
+6,-119.775713,36.754683,,100,,,,Fresno
+7,-119.032102,35.382734,,200,,,,Bakersfield
+8,-120.4,38.18,,,,300,,hydro
+9,-119.1,37.1,,,,400,,hydro
+10,-121.8,38.12,,,400,,,wind bay area
+11,-120.3,38.16,,,,500,,hydro
+12,-120,35.34,,200,,,,sun middle cali
+13,-120.86,35.21,,,,1000,,Diablo Canyon power plant
+14,-118.5,35.25,,400,200,600,,sun wind middle cali
+15,-119.3,36,,250,400,,,sun wind middle cali
+16,-118.445906,34.077411,-2000,,,,500,LA
+17,-118.7,34.54,,,,500,,hydro LA
+18,-117.3,35.03,,300,400,,,sun
+19,-116.6,33.91,,,200,,400,coal wind
+20,-117.225697,32.843751,-500,,,,500,SD
+21,-114.8,33.67,,400,600,,,Blythe Airport
+22,-115.6,32.72,,200,,400,,imperial irrigation district (sun & geo)
+23,-115.5,35.6,,300,,,,sun death valley

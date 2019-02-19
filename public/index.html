@@ -16,61 +16,101 @@
     <div id="title-div">
         <h1>Resilient Renewables</h1>
         <h2>DESIGNING CALIFORNIA'S NEW POWER GRID</h2>
-        <p>Insert awesome sentence or two to introduce the article here!</p>
+        <p>California’s commitment to 100% carbon-neutral energy poses
+          challenges for its existing infrastructure. Caltech researchers have
+          created a tool that can help design a more resilient energy grid.</p>
     </div>
 </div>
 <div class="panel">
-  <p>Here are the pie chart drafts. Open issues:
-  </p>
-  <ul>
-    <li>Are our numbers for 2017 exactly right? This is from a chart that
-      combines 2017 data on imports and production (but doesn't take into
-      account any potential exports). It's not clear if this is the same thing
-      as consumption, which is what SB100 regulates.</li>
-  </ul>
+  <h2>The Renewable Revolution</h2>
+  <p>In September 2018, governor Jerry Brown signed SB-100 into law, committing
+    California to 100% zero-carbon energy supply by 2045.</p>
+  <p>With this commitment to clean energy, California’s power grid is about to
+    undergo a transformation--and the way the state handles this transformation
+    will determine whether it will be able to support itself with a consistent,
+    reliable supply of renewable energy or end up with a brittle system prone to
+     failures and blackouts.</p>
+  <p>California’s power grid is a massive network of generators, transmission lines, and substations that provide consistent power to the state’s millions of homes and businesses. To become zero-carbon we need to invest in new technology and infrastructure including carbon capture, solar power, and wind energy.</p>
+  <p>Carbon capture and storage allows the state to reclaim carbon from the atmosphere to offset emissions from existing energy sources such as natural gas. These emissions offset technology, along with nuclear and hydroelectric power, are classified as carbon-neutral energy sources.</p>
   <div id='pies'>
     <svg id='pie-present' width='350' height='300'>
     </svg>
     <svg id='pie-future' width='350' height='300'>
     </svg>
   </div>
-  <p>Here are the first drafts of our line charts. This isn't real data, just
-    the general "gist" for each chart. Each one will be accompanied by a short
-    paragraph of text in the final version (see 3rd draft doc). Open issues:
-  </p>
-  <ul>
-    <li>Which charts do we want y-axis labels on? Just the first one? I'm not
-      sure about what the first chart is measuring (California? Whole US?) so
-      definitely need to double-check that.</li>
-    <li>For the natural gas, solar, and wind charts, where are we getting the
-      data? Is a rough sketchy approximation OK?</li>
-  </ul>
+  <p>Solar and wind technology are completely carbon-free, and classified as renewable energy sources. SB-100 requires that at least 60% of California’s new zero-carbon energy will come from renewable sources such as these. The current energy grid is equipped to handle traditional energy sources, not large scale renewable energy.</p>
+  <h2>The Grid Today: Where We Are and Where We’re Going</h2>
+  <p>The power grid today is a top-down system that has been designed to distribute energy from large power plants to consumers as one flow, with one direction. The power grid is generally quite reliable--that is, power is almost always available to us as consumers when we need it--despite the fact that the “demand” for power can change rapidly.</p>
   <div id='line-charts'>
     <div id='duck-curve' class='line-chart'>
     </div>
+    <p>The “duck curve” illustrates how the demand for electrical power changes throughout the day. Demand generally drops during the middle of the day and rises again after sunset. These fluctuations in energy usage create a challenge for the grid because energy production must be ramped up during peak hours when demand is higher, and ramp down production when demand is lower.</p>
+    <p>California’s two largest sources of energy today are natural gas and hydropower. These sources of energy have the advantage of being able to deal with the “duck curve” effectively. The production of energy from natural gas and hydropower can be coordinated with peak times, effectively creating energy at the exact times it needs to be delivered to consumers.</p>
     <div id='natural-gas-curve' class='line-chart'>
     </div>
+    <p>While a natural gas plant can ramp its energy production up or down to quickly match demand, a wind farm can’t do the same--its energy output depends on how strongly the wind is blowing, which is not under our direct control. Energy output from a wind farm tends to vary wildly throughout the day.</p>
     <div id='solar-curve' class='line-chart'>
     </div>
+    <p>Solar farms face a similar obstacle: their energy output depends on when the sun is shining. Solar farms tend to produce the most energy during the middle of the day, when demand is actually at its lowest!</p>
     <div id='wind-curve' class='line-chart'>
     </div>
+    <p>Because solar and wind power cannot be easily ramped up and down on demand like natural gas, a grid that relies heavily on solar and wind can be at risk of failures and blackouts if it is not deliberately designed to be resilient.</p>
   </div>
+  <h2>Renewables and Risk</h2>
+  <p>The modern grid is designed to handle expected levels of electrical current, and it functions best when electricity is generated and transmitted at a steady rate. For a grid that relies heavily on fossil fuels, this is no problem, but as dependency on solar and wind increases, energy production becomes more variable. This can present serious problems in the form of power surges.</p>
+  <p>When there is a surge in power beyond expected levels, the grid can be overloaded and damaged, which can lead to widespread failures known as blackouts. Just like traffic gridlock at one intersection can cause gridlock at surrounding intersections, the failure of a single power line can be enough to cause cascading failures, and a large area can lose power. This is what almost happened to to China’s grid in 2007 ( https://www.wri.org/publication/high-wire-act ). During a particularly windy period, China had to deliberately idle one third of all of their wind turbines, because their grid was dangerously close to overloading and causing a blackout. They were only able to resolve this issue by drastically expanding power capacity, via both transmission lines and battery storage. Similarly, California has to throttle back its solar energy production to prevent grid overload. The state is forced to throw away free power because of grid limitations. (https://www.technologyreview.com/s/611188/california-is-throttling-back-record-levels-of-solarand-thats-bad-news-for-climate-goals/)</p>
+  <h2>Modeling The Power Grid: Design Matters</h2>
+  <div class='container'>
+    <div class='column'>
+      <svg id='graph-map-1' x='0' y='0' width='100%' height='100%' viewBox='-10 -15 300 300'>
 
+      </svg>
+    </div>
+    <div class='column'>
+      <p>Paragraph introducing the graphical model (nodes represent power
+        sources + sinks, edges represent transmission lines)...</p>
+    </div>
+  </div>
+  <div class='panel container'>
+    <div class='column'>
+      <p>Paragraph introducing the idea of risk (red means higher risk of
+        failure and potential for blackouts)...</p>
+    </div>
+    <div class='column'>
+      <svg id='graph-map-2-risk' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
 
-  <p>Draft of map with 2017 data. Hover over a node to highlight everything of
-    that class. Open issues: </p>
-    <ul>
-      <li>What else do we want to pop up when a class is "highlighted"? Extra
-      information about that class of node?</li>
-      <li>What other data/numbers do we want to display all the time? Not sure
-      what would be useful. Percentage of production for each class? Also...
-      is it weird that this is "production" once again, when what SB100 regulates
-      is consumption?</li>
-    </ul>
-  <svg id='map' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
+      </svg>
+    </div>
+  </div>
+  <div class='panel container'>
+    <div class='column'>
+      <svg id='graph-map-3-bad-config' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
 
-  </svg>
+      </svg>
+    </div>
+    <div class='column'>
+      <p>This configuration is bad! Paragraph about things that increase
+        risk in a grid.</p>
+    </div>
+  </div>
+  <div class='panel container'>
+    <div class='column'>
+      <p>This configuration is good! Paragraph about things that decrease
+        risk in a grid.</p>
+    </div>
+    <div class='column'>
+      <svg id='graph-map-4-good-config' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
+
+      </svg>
+    </div>
+  </div>
+  <h2>Looking to the Future: Managing Risk for a Reliable Grid</h2>
+  <p>(What can we do about it? Well, we can make good infrastructure decisions)</p>
+  <p>(What can we do about it? Well, we can make consumption flexible)</p>
+  <p>(What can we do about it? Well, we can store energy better, but there is no clear good candidate technology at this time)</p>
+  <p>(Sum up)</p>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src='js/d3.v5.min.js' charset='utf-8'></script>

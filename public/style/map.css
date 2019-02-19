@@ -1,3 +1,72 @@
 #map {
   background-color: white;
 }
+
+.edge {
+  stroke: white;
+}
+
+.risk_90 {
+  stroke: #FF0000;
+}
+
+.risk_80 {
+  stroke: #FF1C1C;
+}
+
+.risk_70 {
+  stroke: #FF3838;
+}
+
+.risk_60 {
+  stroke: #FF5555;
+}
+
+.risk_50 {
+  stroke: #FF7171;
+}
+
+.risk_40 {
+  stroke: #FF8D8D;
+}
+
+.risk_30 {
+  stroke: #FFAAAA;
+}
+
+.risk_20 {
+  stroke: #FFC6C6;
+}
+
+.risk_10 {
+  stroke: #FFE2E2;
+}
+
+.risk_00 {
+  stroke: #FFFFFF;
+}
+
+.solar {
+  fill: #FCDF19;
+  stroke: #BDA713;
+}
+
+.wind {
+  fill: #3FC7FC;
+  stroke: #2F95BD;
+}
+
+.other {
+  fill: #BBB;
+  stroke: #888;
+}
+
+.unselected {
+  fill: #555;
+  stroke: #555;
+}
+
+.city {
+  fill: #BBB;
+  stroke: #888;
+}

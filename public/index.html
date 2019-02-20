@@ -59,7 +59,10 @@
   <h2>Renewables and Risk</h2>
   <p>The modern grid is designed to handle expected levels of electrical current, and it functions best when electricity is generated and transmitted at a steady rate. For a grid that relies heavily on fossil fuels, this is no problem, but as dependency on solar and wind increases, energy production becomes more variable. This can present serious problems in the form of power surges.</p>
   <p>When there is a surge in power beyond expected levels, the grid can be overloaded and damaged, which can lead to widespread failures known as blackouts. Just like traffic gridlock at one intersection can cause gridlock at surrounding intersections, the failure of a single power line can be enough to cause cascading failures, and a large area can lose power. This is what almost happened to to China’s grid in 2007 ( https://www.wri.org/publication/high-wire-act ). During a particularly windy period, China had to deliberately idle one third of all of their wind turbines, because their grid was dangerously close to overloading and causing a blackout. They were only able to resolve this issue by drastically expanding power capacity, via both transmission lines and battery storage. Similarly, California has to throttle back its solar energy production to prevent grid overload. The state is forced to throw away free power because of grid limitations. (https://www.technologyreview.com/s/611188/california-is-throttling-back-record-levels-of-solarand-thats-bad-news-for-climate-goals/)</p>
+  <p>The intrinsically intermittent and highly variable nature of renewables is not the only obstacle in their large-scale adoption in power grids. The other major issue is that geographically close wind farms (solar panels) have very similar power generation profiles as their output is influence by the same weather pattern. At the same time, there are also non-negligible temporal correlations (PHRASE IT BETTER the wind here will be the wind there in a few min, the sun here will be the sunlight a bit more west in few a min>) It becomes then crucial to account for these spatio-temporal correlations while making operational decision and infrastructure investments and it is possible to capture mathematically using high-dimensional joint distributions for renewable energy sources.
+</p>
   <h2>Modeling The Power Grid: Design Matters</h2>
+  <p>So what makes a grid resilient? How can we identify the points in the power grid that are most likely to fail, and why? Researchers from Caltech and Centrum Wiskunde & Informatica in Amsterdam are investigating just that, using statistical methods to predict which power lines in a grid are most likely to fail, given knowledge of power generation, transport, and use. This model represents a power grid as a ‘network’, which is a set of interconnected nodes linked together by a set of lines. Each line represents a power transmission line, and each node represent either a place where power is generated (a generator) or consumed (a city, an industrial district, etc.). </p>
   <div class='container'>
     <div class='column'>
       <svg id='graph-map-1' x='0' y='0' width='100%' height='100%' viewBox='-10 -15 300 300'>
@@ -67,24 +70,24 @@
       </svg>
     </div>
     <div class='column'>
-      <p>Paragraph introducing the graphical model (nodes represent power
-        sources + sinks, edges represent transmission lines)...</p>
+      <p>A line overloads if the absolute amount of power flowing in it exceeds a given line threshold. We assume that such overloads immediately lead to the outage of the corresponding line, to which we will henceforth refer simply as line failure. The rationale behind this assumption is that there are security relays on high voltage transmission lines performing an emergency shutdown as soon as the current exceeds a dangerous level. Without such mechanisms, lines may overheat, sag and eventually trip.</p>
     </div>
   </div>
-  <div class='panel container'>
+  <div class='container'>
     <div class='column'>
-      <p>Paragraph introducing the idea of risk (red means higher risk of
-        failure and potential for blackouts)...</p>
+      <p>The model assumes that the power injected or consumed at each node fluctuates randomly around the nominal set value (think about it as the average consumption for that city/district or generation setpoint for that generator). As a consequence of these fluctuations in the power generation and consumption, also the power flowing on each line fluctuates randomly around the nominal value, which may be beyond the thermal capacity of that line, causing the overload of that line and potentially its “failure” (due to protective measure that will trigger the disconnection of that line). The mathematical framework in the article can identify the most vulnerable lines, i.e. those that are more prone to fail in view of the power flow physics and of the correlation structure of the renewable fluctuations. In the picture below (MAP #3) for instance each line is colored differently depending on its failure risk.</p>
     </div>
     <div class='column'>
-      <svg id='graph-map-2-risk' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
+      <svg id='graph-map-2-risk' x='0' y='0' width='100%' height='100%' viewBox='-10 -15 300 300'>
 
       </svg>
     </div>
   </div>
-  <div class='panel container'>
+  <p>Any type of line failure causes a global redistribution of the line power flows according to Kirchhoff’s laws and this could trigger further outages and cascading failures, leading to blackouts. For this reason understanding which are the transmission lines that are most likely to fail is crucial to prevent cascading failures blackouts and take preventive actions to mitigate the highly unpredictable and non-local propagation of these failures.
+</p>
+  <div class='container'>
     <div class='column'>
-      <svg id='graph-map-3-bad-config' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
+      <svg id='graph-map-3-bad-config' x='0' y='0' width='100%' height='100%' viewBox='-10 -15 300 300'>
 
       </svg>
     </div>
@@ -93,13 +96,13 @@
         risk in a grid.</p>
     </div>
   </div>
-  <div class='panel container'>
+  <div class='container'>
     <div class='column'>
       <p>This configuration is good! Paragraph about things that decrease
         risk in a grid.</p>
     </div>
     <div class='column'>
-      <svg id='graph-map-4-good-config' x='0' y='0' width='500' height='500' viewBox='-10 -15 300 300'>
+      <svg id='graph-map-4-good-config' x='0' y='0' width='100%' height='100%' viewBox='-10 -15 300 300'>
 
       </svg>
     </div>

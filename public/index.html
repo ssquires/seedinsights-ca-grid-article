@@ -23,14 +23,9 @@
 </div>
 <div class="panel">
   <h2>The Renewable Revolution</h2>
-  <p>In September 2018, governor Jerry Brown signed SB-100 into law, committing
-    California to 100% zero-carbon energy supply by 2045.</p>
-  <p>With this commitment to clean energy, California’s power grid is about to
-    undergo a transformation--and the way the state handles this transformation
-    will determine whether it will be able to support itself with a consistent,
-    reliable supply of renewable energy or end up with a brittle system prone to
-     failures and blackouts.</p>
-  <p>California’s power grid is a massive network of generators, transmission lines, and substations that provide consistent power to the state’s millions of homes and businesses. To become zero-carbon we need to invest in new technology and infrastructure including carbon capture, solar power, and wind energy.</p>
+  <p>In September 2018, governor Jerry Brown signed SB-100 into law, committing California to 100% zero-carbon energy supply by 2045.</p>
+  <p>With this commitment to clean energy, California’s power grid is about to undergo a transformation--and the way the state handles this transformation will determine whether it will be able to support itself with a consistent, reliable supply of renewable energy or end up with a brittle system prone to failures and blackouts.</p>
+  <p>California’s power grid is a massive network of generators, transmission lines, and substations that provide consistent power to the state’s millions of homes and businesses. To become zero-carbon, the state will need to invest in new technology and infrastructure including carbon capture, solar power, and wind energy.</p>
   <p>Carbon capture and storage allows the state to reclaim carbon from the atmosphere to offset emissions from existing energy sources such as natural gas. These emissions offset technology, along with nuclear and hydroelectric power, are classified as carbon-neutral energy sources.</p>
   <div id='pies'>
     <svg id='pie-present' width='350' height='300'>
@@ -38,14 +33,14 @@
     <svg id='pie-future' width='350' height='300'>
     </svg>
   </div>
-  <p>Solar and wind technology are completely carbon-free, and classified as renewable energy sources. SB-100 requires that at least 60% of California’s new zero-carbon energy will come from renewable sources such as these. The current energy grid is equipped to handle traditional energy sources, not large scale renewable energy.</p>
+  <p>Solar and wind technology are completely carbon-free, and classified as renewable energy sources. SB-100 requires that at least 60% of California’s new zero-carbon energy will come from renewable sources such as these. The current grid was built and designed around big controllable conventional generators and is not equipped to cope with huge variability in power supply, as it would be the case for a large scale adoption of these renewable energy sources.</p>
   <h2>The Grid Today: Where We Are and Where We’re Going</h2>
-  <p>The power grid today is a top-down system that has been designed to distribute energy from large power plants to consumers as one flow, with one direction. The power grid is generally quite reliable--that is, power is almost always available to us as consumers when we need it--despite the fact that the “demand” for power can change rapidly.</p>
+  <p>The power grid today is a top-down system that has been designed to distribute energy from large power plants to consumers as a one-directional flow. This complex infrastructure is generally quite reliable -- that is, power is almost always available to us as consumers when we need it -- despite the fact that the “demand” for power can change rapidly.</p>
   <div id='line-charts'>
     <div id='duck-curve' class='line-chart'>
     </div>
     <p>The “duck curve” illustrates how the demand for electrical power changes throughout the day. Demand generally drops during the middle of the day and rises again after sunset. These fluctuations in energy usage create a challenge for the grid because energy production must be ramped up during peak hours when demand is higher, and ramp down production when demand is lower.</p>
-    <p>California’s two largest sources of energy today are natural gas and hydropower. These sources of energy have the advantage of being able to deal with the “duck curve” effectively. The production of energy from natural gas and hydropower can be coordinated with peak times, effectively creating energy at the exact times it needs to be delivered to consumers.</p>
+    <p>California’s two largest sources of energy today, natural gas and hydropower, are effective at dealing with the duck curve. Electricity production from these sources can be ramped up or down according to demand, effectively creating energy at the exact times it needs to be delivered to consumers.</p>
     <div id='natural-gas-curve' class='line-chart'>
     </div>
     <p>While a natural gas plant can ramp its energy production up or down to quickly match demand, a wind farm can’t do the same--its energy output depends on how strongly the wind is blowing, which is not under our direct control. Energy output from a wind farm tends to vary wildly throughout the day.</p>
@@ -54,15 +49,19 @@
     <p>Solar farms face a similar obstacle: their energy output depends on when the sun is shining. Solar farms tend to produce the most energy during the middle of the day, when demand is actually at its lowest!</p>
     <div id='wind-curve' class='line-chart'>
     </div>
-    <p>Because solar and wind power cannot be easily ramped up and down on demand like natural gas, a grid that relies heavily on solar and wind can be at risk of failures and blackouts if it is not deliberately designed to be resilient.</p>
+    <p>Because solar and wind power cannot be ramped up on demand like natural gas, a grid that relies heavily on solar and wind can be at risk of failures and blackouts if it is not carefully designed to be resilient. </p>
   </div>
   <h2>Renewables and Risk</h2>
-  <p>The modern grid is designed to handle expected levels of electrical current, and it functions best when electricity is generated and transmitted at a steady rate. For a grid that relies heavily on fossil fuels, this is no problem, but as dependency on solar and wind increases, energy production becomes more variable. This can present serious problems in the form of power surges.</p>
-  <p>When there is a surge in power beyond expected levels, the grid can be overloaded and damaged, which can lead to widespread failures known as blackouts. Just like traffic gridlock at one intersection can cause gridlock at surrounding intersections, the failure of a single power line can be enough to cause cascading failures, and a large area can lose power. This is what almost happened to to China’s grid in 2007 ( https://www.wri.org/publication/high-wire-act ). During a particularly windy period, China had to deliberately idle one third of all of their wind turbines, because their grid was dangerously close to overloading and causing a blackout. They were only able to resolve this issue by drastically expanding power capacity, via both transmission lines and battery storage. Similarly, California has to throttle back its solar energy production to prevent grid overload. The state is forced to throw away free power because of grid limitations. (https://www.technologyreview.com/s/611188/california-is-throttling-back-record-levels-of-solarand-thats-bad-news-for-climate-goals/)</p>
-  <p>The intrinsically intermittent and highly variable nature of renewables is not the only obstacle in their large-scale adoption in power grids. The other major issue is that geographically close wind farms (solar panels) have very similar power generation profiles as their output is influence by the same weather pattern. At the same time, there are also non-negligible temporal correlations (PHRASE IT BETTER the wind here will be the wind there in a few min, the sun here will be the sunlight a bit more west in few a min>) It becomes then crucial to account for these spatio-temporal correlations while making operational decision and infrastructure investments and it is possible to capture mathematically using high-dimensional joint distributions for renewable energy sources.
+  <p>To function properly, the grid should always maintain a perfect balance between power demand and power supply. For a grid that relies heavily on fossil fuels, this is no problem (this type of generators are highly controllable), but as solar and wind energy production increases, matching power demand with highly volatile and uncontrollable energy sources becomes more problematic and at the same time makes the grid more vulnerable to power surges and contingencies. For this reason, a more sustainable fossil-free yet reliable energy system requires new paradigms for network management to cope with this massive uncertainty.</p>
+  <p>In case of sudden power fluctuations or power surges, transmission lines may become overloaded and possibly be damaged or trip due to their protection mechanisms. If such a line failure occurs, the power redistributes on the remaining lines according to power flow physics and this could overload them as well and lead to cascading failures and eventually to the so-called blackouts. Just like traffic gridlock at one intersection can cause gridlock at surrounding intersections, the failure of a single transmission line can be enough to cause cascading failures, and a large area can lose power. </p>
+  <p>This is what almost happened to to China’s grid in 2007 ( https://www.wri.org/publication/high-wire-act ). During a particularly windy period, China had to deliberately idle one third of all of their wind turbines, because their grid was dangerously close to overloading and causing a blackout. They were only able to resolve this issue by drastically expanding power capacity, via both transmission lines and battery storage. Similarly, California has often to throttle back its solar energy production to prevent grid overload, because there is not enough capacity in the grid to deliver that power or because there is not enough storage capacity.
 </p>
+  <p>The intrinsically intermittent and highly variable nature of renewables is not the only obstacle in their large-scale adoption in power grids. The other major issue is that geographically close wind farms (solar panels) have very similar power generation profiles as their output is influence by the same weather pattern. This means for instance that a unpredicted gust of wind affects all the wind turbines in a certain area, causing at an aggregate level a sudden burst of power generation which may overload the transmission lines nearby.</p>
+  <p>It becomes then crucial to account for these spatio-temporal correlations while making operational decision and infrastructure investments and it is possible to capture mathematically using high-dimensional joint distributions for renewable energy sources. </p>
   <h2>Modeling The Power Grid: Design Matters</h2>
-  <p>So what makes a grid resilient? How can we identify the points in the power grid that are most likely to fail, and why? Researchers from Caltech and Centrum Wiskunde & Informatica in Amsterdam are investigating just that, using statistical methods to predict which power lines in a grid are most likely to fail, given knowledge of power generation, transport, and use. This model represents a power grid as a ‘network’, which is a set of interconnected nodes linked together by a set of lines. Each line represents a power transmission line, and each node represent either a place where power is generated (a generator) or consumed (a city, an industrial district, etc.). </p>
+  <p>So what makes a grid resilient? How can we identify the points in the power grid that are most likely to fail, and why? Researchers from Caltech and Centrum Wiskunde & Informatica in Amsterdam are investigating just that, using statistical methods to predict which power lines in a grid are most likely to fail, given knowledge of power generation and consumption. This model represents a power grid as a ‘network’, which is a set of interconnected nodes linked together by a set of lines. Each line represents a power transmission line, and each node represent either a place where power is generated (a generator) or consumed (a city, an industrial district, etc.).</p>
+  <p>Differently from most networks (roads, internet, etc.), we cannot design the routing of power on the transmission lines since once the power injections at the nodes are fixed, power flow physics determines the flows on the line. This means that we have only an indirect control of what is actually happening on the transmission lines. </p>
+
   <div class='container'>
     <div class='column'>
       <svg id='graph-map-1' x='0' y='0' width='100%' height='100%' viewBox='-10 -15 300 300'>
@@ -70,12 +69,13 @@
       </svg>
     </div>
     <div class='column'>
-      <p>A line overloads if the absolute amount of power flowing in it exceeds a given line threshold. We assume that such overloads immediately lead to the outage of the corresponding line, to which we will henceforth refer simply as line failure. The rationale behind this assumption is that there are security relays on high voltage transmission lines performing an emergency shutdown as soon as the current exceeds a dangerous level. Without such mechanisms, lines may overheat, sag and eventually trip.</p>
+        <p>A line overloads if the absolute amount of power flowing in it exceeds a given line threshold. We assume that such overloads immediately lead to the outage of the corresponding line, to which we will henceforth refer simply as line failure. The rationale behind this assumption is that there are security relays on high voltage transmission lines performing an emergency shutdown as soon as the current exceeds a dangerous level. Without such mechanisms, lines may overheat, sag and eventually trip.</p>
     </div>
   </div>
+
   <div class='container'>
     <div class='column'>
-      <p>The model assumes that the power injected or consumed at each node fluctuates randomly around the nominal set value (think about it as the average consumption for that city/district or generation setpoint for that generator). As a consequence of these fluctuations in the power generation and consumption, also the power flowing on each line fluctuates randomly around the nominal value, which may be beyond the thermal capacity of that line, causing the overload of that line and potentially its “failure” (due to protective measure that will trigger the disconnection of that line). The mathematical framework in the article can identify the most vulnerable lines, i.e. those that are more prone to fail in view of the power flow physics and of the correlation structure of the renewable fluctuations. In the picture below (MAP #3) for instance each line is colored differently depending on its failure risk.</p>
+      <p><p>The model assumes that the power injected or consumed at each node fluctuates randomly around the nominal set value (think about it as the average consumption for that city/district or generation setpoint for that generator). As a consequence of these fluctuations in the power generation and consumption, also the power flowing on each line fluctuates randomly around the nominal value, which may be beyond the thermal capacity of that line, causing the overload of that line and potentially its “failure” (due to protective measure that will trigger the disconnection of that line). The mathematical framework in the article can identify the most vulnerable lines, i.e. those that are more prone to fail in view of the power flow physics and of the correlation structure of the renewable fluctuations. In the picture below (MAP #3) for instance each line is colored differently depending on its failure risk.</p>
     </div>
     <div class='column'>
       <svg id='graph-map-2-risk' x='0' y='0' width='100%' height='100%' viewBox='-10 -15 300 300'>
@@ -92,14 +92,13 @@
       </svg>
     </div>
     <div class='column'>
-      <p>This configuration is bad! Paragraph about things that increase
-        risk in a grid.</p>
+      <p>A seemingly natural way to increment renewable energy production could be to enlarge current wind and solar farms or build new ones in adjacent areas (which have probably been picked as very windy/sunny). As illustrated earlier, the power generation of these farms will be highly correlated and at an aggregate level will result in steeper power burst or drops. Furthermore, this very localized renewable  expansion will increase the flows connecting those farms to the nearby cities and industrial districts and if that infrastructure is not upgraded accordingly, may result in more frequent overloads and failures of those lines, as depicted in the risk map #4 below. </p>
     </div>
   </div>
   <div class='container'>
     <div class='column'>
-      <p>This configuration is good! Paragraph about things that decrease
-        risk in a grid.</p>
+      <p>A less clustered renewable expansion like the one illustrated in map #5 results in a more reliable and less failure-prone network. At the same time, it will most likely require less investments on the infrastructure side to maintain the same reliability standards.
+</p>
     </div>
     <div class='column'>
       <svg id='graph-map-4-good-config' x='0' y='0' width='100%' height='100%' viewBox='-10 -15 300 300'>
@@ -108,10 +107,12 @@
     </div>
   </div>
   <h2>Looking to the Future: Managing Risk for a Reliable Grid</h2>
-  <p>(What can we do about it? Well, we can make good infrastructure decisions)</p>
-  <p>(What can we do about it? Well, we can make consumption flexible)</p>
-  <p>(What can we do about it? Well, we can store energy better, but there is no clear good candidate technology at this time)</p>
-  <p>(Sum up)</p>
+  <p>In order to keep the grid safe and reliable as renewables scale up, it is important to make good infrastructure decisions, that account for the spatio-temporal correlations of renewable generations. In this respect, the model developed in the article can be an important tool for grid expansion planning, since it can be used to evaluate what benefits or risks of adding new lines or new renewable generation.</p>
+  <p>Another complementary effort should be made on the consumption side, to reduce the magnitude of peak power demand and to distribute the energy consumption more evenly across the day (cf. duck curve). One possible strategy would be to implement on a large scale demand-response programs, where the grid could have the capability to temporarily switch off some electrical appliances (fridges, pool pumps, AC machines, etc.). In this way, at aggregate level the grid would become more flexible, being able to defer shave peak demand and respond better to emergency situations or contingency.</p>
+  <p>To comply with SB 100, California will need to adopt new technologies and focus on redesigning the grid as it is today. There are a number of approaches that could help the grid become safer and more reliable.</p>
+  <p>In 2016, Germany committed $23.6 billion to implement smart metering throughout its grid. Smart grids allow for better implementation of renewable energy by allowing users to moderate their energy consumption through data. They can also allow energy managers to pinpoint exact locations of energy failure, making restoration of power faster and more dependable.</p>
+  <p>The argument for the metering approach is further supported by the practice of distributed generation. This concept is fueled by distributed energy resources, which include energy generating devices such as solar panels and wind turbines; energy storers such as batteries; or energy managers such as smart meters. As a collective group, distributed energy resources can be connected to the grid and allow energy users to shift some of their demand to energy resources as local as their own backyards. Distributed generation can even allow users to monetize their own energy production by selling excess energy back to the grid.</p>
+  <p>While smart metering is already implemented at different scales in California, some argue for a more centralized approach. A national energy grid would improve energy efficiency, increase implementation of renewables, and lower energy rates. Now that technology has been developed to transfer energy further and renewable energy is on demand, there is newfound momentum for the national energy grid project. Grids that are more centralized than the one California has today, like the national energy grid idea, are supported by clean energy analysts. The challenge is in identifying how exactly transmission lines will be expanded, keeping fluctuating energy supplies and demands in mind, across such a grand scale of states, regions, and other jurisdictions with varying timelines and priorities.</p>
 </div>
 
 

@@ -1,3 +1,6 @@
+
+
+
 const duckData = [
   [0, 21.5],
   [3.8, 19],
@@ -52,6 +55,7 @@ const xLabels = ['12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm'];
 function makeLineChart(containerID,
                        chartTitle,
                        dataset,
+                       columns,
                        dataColors,
                        drawPoints=false,
                        yLabels=[],
@@ -63,8 +67,8 @@ function makeLineChart(containerID,
   let yLength = 200;
   let xStart = 0;
   let xEnd = 24;
-  let yStart = 9;
-  let yEnd = 28;
+  let yStart = 0;
+  let yEnd = 30000;
 
   // Make svg element
   let chart = d3.select(containerID).append('svg')
@@ -97,7 +101,7 @@ function makeLineChart(containerID,
     .attr('transform', 'rotate(270)');
   let ybbox = yText.node().getBBox();
   if (yLabels.length > 0) {
-    yText.attr('y', '-60');
+    yText.attr('y', '-40');
   } else {
     yText.attr('y', '-10');
   }
@@ -153,25 +157,24 @@ function makeLineChart(containerID,
 
     chart.append('text')
       .html(yLabels[i])
-      .attr('x', yAxisLevel - 50)
+      .attr('x', yAxisLevel - 30)
       .attr('y', xAxisLevel - i * spaceBetweenTicks + 5)
       .attr('font-size', 14)
       .attr('font-family', 'Open Sans');
   }
 
-
-  for (let j = 0; j < dataset.length; j++) {
-    let data = dataset[j];
+  console.log(columns)
+  // Make curve data for each column we want to include
+  for (let j = 0; j < columns.length; j++) {
+    curveData = [];
     let fillColor = dataColors[j];
-
-    curveData = []
-
-    // Scale data to chart size
-    for (let dataPoint of data) {
-      dataX = (dataPoint[0] / (xEnd - xStart)) * xLength + yAxisLevel;
-      dataY = xAxisLevel - yLength * ((dataPoint[1] - yStart) / (yEnd - yStart));
+    for (let row of dataset) {
+      dataX = (row['Hour'] / (xEnd - xStart)) * xLength + yAxisLevel;
+      dataY = xAxisLevel - yLength * ((row[columns[j]] - yStart) / (yEnd - yStart));
       curveData.push([dataX, dataY]);
     }
+    console.log(curveData);
+
     let makeCurve = d3.line().curve(d3.curveCatmullRom);
     let path = makeCurve(curveData);
     chart.append('path').attr('d', path)

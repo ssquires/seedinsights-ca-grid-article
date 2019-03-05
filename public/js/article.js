@@ -16,36 +16,37 @@ $(document).ready(function() {
   drawMaps();
   makePieChart('#pie-present', presentDayData, pieColorsNow, '2017');
   makePieChart('#pie-future', futureData, pieColorsFuture, '2045');
-  makeLineChart('#duck-curve',
-                'The Duck Curve',
-                [duckData],
-                ['black'],
-                false,
-                ['9,000', '15,000', '21,000', '28,000'],
-                'Time of Day',
-                'Megawatts');
-  makeLineChart('#natural-gas-curve',
-                'Natural Gas Production',
-                [duckData, gasData],
-                ['black', 'red'],
-                false,
-                [],
-                'Time of Day',
-                'Energy');
-  makeLineChart('#solar-curve',
-                'Solar Production',
-                [duckData, solarData],
-                ['black', 'orange'],
-                false,
-                [],
-                'Time of Day',
-                'Energy');
-  makeLineChart('#wind-curve',
-                'Wind Production',
-                [duckData, windData],
-                ['black', 'blue'],
-                false,
-                [],
-                'Time of Day',
-                'Energy');
+  let lineChartData = d3.csv('20190109_CA_DuckCurve.csv').then(function (data) {
+    makeLineChart('#energy-demand',
+                  'Demand for Energy: 1/9/2019',
+                  data,
+                  ['Total Load (MW)'],
+                  ['black'],
+                  false,
+                  ['0', '10K', '20K', '30K'],
+                  'Time of Day',
+                  'Load (Megawatts)');
+
+    makeLineChart('#renewable-production',
+                  'Solar and Wind Production: 1/9/2019',
+                  data,
+                  ['Solar Plus Wind (MW)'],
+                  ['limegreen'],
+                  false,
+                  ['0', '10K', '20K', '30K'],
+                  'Time of Day',
+                  'Production (Megawatts)');
+
+    makeLineChart('#duck-curve',
+                  'Net Load: 1/9/2019',
+                  data,
+                  ['Net Load (MW)'],
+                  ['black'],
+                  false,
+                  ['0', '10K', '20K', '30K'],
+                  'Time of Day',
+                  'Net Load (Megawatts)');
+  });
+
+
 });

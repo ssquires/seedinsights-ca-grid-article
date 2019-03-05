@@ -2,9 +2,9 @@ const pieColorsNow = ['#003F5C', '#68CF6A', '#00A28A'];
 const pieColorsFuture = ['#00A28A', '#68CF6A'];
 
 const presentDayData = [
-  {'label': 'Natural Gas', 'value': 43},
-  {'label': 'Renewables', 'value': 30},
-  {'label': 'Carbon Neutral', 'value': 27}
+  {'label': 'Natural Gas', 'value': 64.5},
+  {'label': 'Renewables', 'value': 14},
+  {'label': 'Carbon Neutral', 'value': 21.5}
 ];
 
 const futureData = [
@@ -14,7 +14,7 @@ const futureData = [
 
 $(document).ready(function() {
   drawMaps();
-  makePieChart('#pie-present', presentDayData, pieColorsNow, '2017');
+  makePieChart('#pie-present', presentDayData, pieColorsNow, '2016');
   makePieChart('#pie-future', futureData, pieColorsFuture, '2045');
   let lineChartData = d3.csv('20190109_CA_DuckCurve.csv').then(function (data) {
     makeLineChart('#energy-demand',

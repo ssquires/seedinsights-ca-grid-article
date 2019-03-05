@@ -11,6 +11,7 @@
   text-align: center;
 }
 
-#pies svg {
-  margin: 30px;
+#pie-present, #pie-future {
+  margin-left: 2%;
+  margin-right: 2%;
 }

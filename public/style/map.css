@@ -2,6 +2,13 @@
   background-color: white;
 }
 
+.graph-map {
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 .edge {
   stroke: white;
 }

@@ -163,7 +163,6 @@ function makeLineChart(containerID,
       .attr('font-family', 'Open Sans');
   }
 
-  console.log(columns)
   // Make curve data for each column we want to include
   for (let j = 0; j < columns.length; j++) {
     curveData = [];
@@ -173,7 +172,6 @@ function makeLineChart(containerID,
       dataY = xAxisLevel - yLength * ((row[columns[j]] - yStart) / (yEnd - yStart));
       curveData.push([dataX, dataY]);
     }
-    console.log(curveData);
 
     let makeCurve = d3.line().curve(d3.curveCatmullRom);
     let path = makeCurve(curveData);

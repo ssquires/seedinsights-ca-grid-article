@@ -1,10 +1,10 @@
-const pieColorsNow = ['#003F5C', '#68CF6A', '#00A28A'];
-const pieColorsFuture = ['#00A28A', '#68CF6A'];
+const pieColorsNow = ['#777777', '#003E66', '#77C2F2'];
+const pieColorsFuture = ['#003E66', '#77C2F2'];
 
 const presentDayData = [
   {'label': 'Natural Gas', 'value': 64.5},
-  {'label': 'Renewables', 'value': 14},
-  {'label': 'Carbon Neutral', 'value': 21.5}
+  {'label': 'Carbon Neutral', 'value': 21.5},
+  {'label': 'Renewables', 'value': 14}
 ];
 
 const futureData = [

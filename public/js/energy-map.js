@@ -151,7 +151,7 @@ function makeEdges(svgID, data, weightedEdges) {
 				.attr('y1', function (d) { return $('#' + d['from']).attr('cy')})
 				.attr('x2', function (d) { return $('#' + d['to']).attr('cx')})
 				.attr('y2', function (d) { return $('#' + d['to']).attr('cy')})
-				.attr('stroke-width', '2px');
+				.attr('stroke-width', '1.5px');
 
 		// Raise nodes to be drawn on top of edges.
 		d3.select(svgID).selectAll('.node').raise();

@@ -10,7 +10,7 @@
 }
 
 .edge {
-  stroke: white;
+  stroke: gray;
 }
 
 .risk_90 {
@@ -18,49 +18,49 @@
 }
 
 .risk_80 {
-  stroke: #FF1C1C;
+  stroke: #F00E0E;
 }
 
 .risk_70 {
-  stroke: #FF3838;
+  stroke: #E21C1C;
 }
 
 .risk_60 {
-  stroke: #FF5555;
+  stroke: #D42A2A;
 }
 
 .risk_50 {
-  stroke: #FF7171;
+  stroke: #C63838;
 }
 
 .risk_40 {
-  stroke: #FF8D8D;
+  stroke: #B84747;
 }
 
 .risk_30 {
-  stroke: #FFAAAA;
+  stroke: #AA5555;
 }
 
 .risk_20 {
-  stroke: #FFC6C6;
+  stroke: #9C6363;
 }
 
 .risk_10 {
-  stroke: #FFE2E2;
+  stroke: #8E7171;
 }
 
 .risk_00 {
-  stroke: #FFFFFF;
+  stroke: #808080;
 }
 
 .solar {
-  fill: #FCDF19;
-  stroke: #BDA713;
+  fill: #FFAB33;
+  stroke: #DB8000;
 }
 
 .wind {
-  fill: #3FC7FC;
-  stroke: #2F95BD;
+  fill: #77C2F2;
+  stroke: #2A91D4;
 }
 
 .other {

@@ -2,6 +2,10 @@
   background-color: white;
 }
 
+#blackout {
+  background-color: #333;
+}
+
 .graph-map {
   display: block;
   margin: auto;
@@ -76,4 +80,13 @@
 .city {
   fill: #BBB;
   stroke: #888;
+}
+
+.blackout_node {
+  fill: yellow;
+  stroke: yellow;
+}
+
+.blackout_edge {
+  stroke: yellow;
 }

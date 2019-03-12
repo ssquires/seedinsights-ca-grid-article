@@ -45,14 +45,14 @@ function drawMaps() {
     makeLegend('#graph-map-4-good-config', 50, 210);
     parseDataFile('map-4', '#graph-map-4-good-config', 'placeholders_nodes_good_config.csv', 'none', 'placeholders_lines_good_config.csv', true);
 
-    d3.select('#correlation').selectAll('.ca')
+    d3.select('#blackout').selectAll('.ca')
       .data(data)
       .enter().append('path')
       .attr('d', path)
-      .attr("stroke", "#BBB")
+      .attr("stroke", "#445")
       .attr("stroke-width", "0.8px")
-      .attr("fill", "#F5F5F5");
-    parseDataFile('corr', '#correlation', 'grid-data.csv', filterTo='solar');
+      .attr("fill", "#445");
+    parseBlackoutDataFile('blackout', '#blackout', 'blackoutnodes.csv', 'blackoutlines.csv');
   });
 
 

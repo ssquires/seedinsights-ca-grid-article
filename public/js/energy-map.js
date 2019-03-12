@@ -96,6 +96,72 @@ function parseDataFile(idPrefix, svgID, dataFile, filterTo='none', edgeDataFile=
 	});
 }
 
+function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
+	let nodeList = [];
+	d3.csv(dataFile).then(function(data) {
+		let i = 0;
+		for (let nodeData of data) {
+				node = {};
+				if (nodeData['node number']) {
+					node['id'] = idPrefix + nodeData['node number'];
+				} else {
+					node['id'] = idPrefix + i;
+					i++;
+				}
+				node['long'] = nodeData['X (longitude)'];
+				node['lat'] = nodeData['Y (latitude)'];
+				nodeList.push(node);
+		}
+
+		d3.select(svgID).selectAll('.node')
+	        .data(nodeList)
+	        .enter().append('circle')
+					.attr('id', function (d) { return d['id']})
+					.attr('class', 'blackout_node')
+	        .attr('cx', function (d) { return d['long']})
+	        .attr('cy', function (d) { return d['lat']})
+	        .attr('r', 0.02)
+					.attr('stroke-width', '0.01px')
+					.attr('fill-opacity', '1')
+					.attr('stroke-opacity', '1');
+
+		if (edgeDataFile !== 'none') {
+				d3.csv(edgeDataFile).then(function(data) {
+					let edgeList = [];
+
+					for (let edgeData of data) {
+						let edge = {};
+						edge['id'] = idPrefix + 'Edge' + edgeData['Line number'];
+						edge['from'] = idPrefix + edgeData['From node #'];
+						edge['to'] = idPrefix + edgeData['To node #'];
+						edge['class'] = 'stage1_' + edgeData['Stage 1'];
+						edge['class'] += ' stage2_' + edgeData['Stage 2'];
+						edge['class'] += ' stage3_' + edgeData['Stage 3'];
+						edge['class'] += ' stage4_' + edgeData['Stage 4'];
+						edge['class'] += ' stage5_' + edgeData['Stage 5'];
+						edgeList.push(edge);
+					}
+
+					d3.select(svgID).selectAll('.edge')
+								.data(edgeList)
+								.enter().append('line')
+								.attr('id', function (d) { return d['id']})
+								.attr('class', function (d) { return d['class']})
+								.attr('x1', function (d) { return $('#' + d['from']).attr('cx')})
+								.attr('y1', function (d) { return $('#' + d['from']).attr('cy')})
+								.attr('x2', function (d) { return $('#' + d['to']).attr('cx')})
+								.attr('y2', function (d) { return $('#' + d['to']).attr('cy')})
+								.attr('stroke-width', '0.01px')
+								.attr('stroke', 'white');
+						// Raise nodes to be drawn on top of edges.
+						d3.select(svgID).selectAll('.blackout_node').raise();
+				});
+
+
+		}
+	});
+}
+
 function makeNodes(svgID, data, filterTo) {
   	// Create a circle on the map for each node.
 	  d3.select(svgID).selectAll('.node')

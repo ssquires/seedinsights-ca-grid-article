@@ -23,9 +23,10 @@ $(document).ready(function() {
                   ['Total Load (MW)'],
                   ['#003E66'],
                   false,
-                  ['0', '10K', '20K', '30K'],
+                  ['15K', '20K', '25K', '30K'],
                   'Time of Day',
-                  'Load (Megawatts)');
+                  'Load (Megawatts)',
+                  15000, 30000);
 
     makeLineChart('#renewable-production',
                   'Solar and Wind Production: 1/9/2019',
@@ -33,9 +34,11 @@ $(document).ready(function() {
                   ['Solar Plus Wind (MW)'],
                   ['#DB8000'],
                   false,
-                  ['0', '10K', '20K', '30K'],
+                  ['0', '5K', '10K', '15K'],
                   'Time of Day',
-                  'Production (Megawatts)');
+                  'Production (Megawatts)',
+                  0,
+                  15000);
 
     makeLineChart('#duck-curve',
                   'Net Load: 1/9/2019',
@@ -43,9 +46,10 @@ $(document).ready(function() {
                   ['Net Load (MW)'],
                   ['#2A91D4'],
                   false,
-                  ['0', '10K', '20K', '30K'],
+                  ['15K', '20K', '25K', '30K'],
                   'Time of Day',
-                  'Net Load (Megawatts)');
+                  'Load (Megawatts)',
+                  15000, 30000);
   });
 
 

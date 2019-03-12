@@ -4,7 +4,7 @@ let tooltip = d3.select("body")
     		  .style("opacity", 1)
               .style("border-radius", "8px");
 
-function parseDataFile(idPrefix, svgID, dataFile, edgeDataFile, weightedEdges=true) {
+function parseDataFile(idPrefix, svgID, dataFile, filterTo='none', edgeDataFile='none', weightedEdges=true) {
 	let nodeList = [];
 	d3.csv(dataFile).then(function(data) {
 		let i = 0;
@@ -77,8 +77,8 @@ function parseDataFile(idPrefix, svgID, dataFile, edgeDataFile, weightedEdges=tr
 
 				nodeList.push(node);
 		}
-		makeNodes(svgID, nodeList);
-		if (edgeDataFile) {
+		makeNodes(svgID, nodeList, filterTo);
+		if (edgeDataFile !== 'none') {
 				d3.csv(edgeDataFile).then(function(data) {
 					let edgeList = [];
 
@@ -96,10 +96,13 @@ function parseDataFile(idPrefix, svgID, dataFile, edgeDataFile, weightedEdges=tr
 	});
 }
 
-function makeNodes(svgID, data) {
+function makeNodes(svgID, data, filterTo) {
   	// Create a circle on the map for each node.
 	  d3.select(svgID).selectAll('.node')
 	        .data(data.filter(function(d) {
+							if (filterTo == 'solar') {
+								return d['class'].indexOf('solar') >= 0 && Number(d['total_output']) >= 0.0;
+							}
 	            return Number(d['total_output']) >= 0.0;
 	        }))
 	        .enter().append('circle')
@@ -199,7 +202,7 @@ function selectClass(className, svgID) {
 	// Make selected node class larger
 	d3.select(svgID).selectAll(className).raise();
 	d3.select(svgID).selectAll(className).transition('big').duration(300)
-		.attr('r', function(d) {return Math.log(d['total_output'])});
+		.attr('r', function(d) {return Math.max(Math.log(d['total_output']), 3)});
 }
 
 function unselectClass(className, svgID) {
@@ -214,7 +217,7 @@ function unselectClass(className, svgID) {
 
 	// Make unselected node class smaller
 	d3.select(svgID).selectAll(className).transition('small').duration(300)
-		.attr('r', function(d) {return Math.log(d['total_output']) / 1.5});
+		.attr('r', function(d) {return Math.max(Math.log(d['total_output']) / 1.5, 2)});
 }
 
 function makeLegend(svgID, legendX, legendY) {

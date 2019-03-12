@@ -60,15 +60,15 @@ function makeLineChart(containerID,
                        drawPoints=false,
                        yLabels=[],
                        xAxisTitle,
-                       yAxisTitle) {
+                       yAxisTitle,
+                       yStart=0,
+                       yEnd=30000) {
   let xAxisLevel = 200;
   let xLength = 400;
   let yAxisLevel = 0;
   let yLength = 200;
   let xStart = 0;
   let xEnd = 24;
-  let yStart = 0;
-  let yEnd = 30000;
 
   // Make svg element
   let chart = d3.select(containerID).append('svg')

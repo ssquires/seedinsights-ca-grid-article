@@ -113,9 +113,7 @@ function makeNodes(svgID, data, filterTo) {
 	        .attr('r', function (d) { return Math.max(Math.log(d['total_output']) / 1.5, 2)})
 					.attr('stroke-width', '0.8px')
 					.attr('fill-opacity', '1')
-					.attr('stroke-opacity', '1')
-	        .on('mouseover', nodeMouseover)
-					.on('mouseout', nodeMouseout);
+					.attr('stroke-opacity', '1');
 }
 
 function makeEdges(svgID, data, weightedEdges) {
@@ -160,71 +158,10 @@ function makeEdges(svgID, data, weightedEdges) {
 		d3.select(svgID).selectAll('.node').raise();
 }
 
-function nodeMouseover(d) {
-	// Determine class of nodes to select
-	let nodeClass;
-	if (this.classList.contains('solar')) {
-		selectClass('.solar', '#' + this.parentNode.id);
-	} else if (this.classList.contains('wind')) {
-		selectClass('.wind', '#' + this.parentNode.id);
-	} else if (this.classList.contains('renewable')) {
-		selectClass('.renewable', '#' + this.parentNode.id);
-	} else {
-		selectClass('.gas', '#' + this.parentNode.id);
-	}
-
-
-}
-
-function nodeMouseout(d) {
-	if (this.classList.contains('solar')) {
-		unselectClass('.solar', '#' + this.parentNode.id);
-	} else if (this.classList.contains('wind')) {
-		unselectClass('.wind', '#' + this.parentNode.id);
-	} else if (this.classList.contains('renewable')) {
-		unselectClass('.renewable', '#' + this.parentNode.id);	}
-	else {
-		unselectClass('.gas', '#' + this.parentNode.id);
-	}
-}
-
-function selectClass(className, svgID) {
-
-	// Gray out other nodes
-	for (let nodeClass of ['.solar', '.wind', '.renewable', '.gas']) {
-		if (nodeClass != className) {
-			d3.select(svgID).selectAll(nodeClass).transition('gray').duration(300)
-				.attr('fill', colors['unselected'])
-				.attr('stroke', colors['unselected']);
-		}
-	}
-
-	// Make selected node class larger
-	d3.select(svgID).selectAll(className).raise();
-	d3.select(svgID).selectAll(className).transition('big').duration(300)
-		.attr('r', function(d) {return Math.max(Math.log(d['total_output']), 3)});
-}
-
-function unselectClass(className, svgID) {
-
-	// Turn all nodes back to their original colors
-	for (let nodeClass of ['.solar', '.wind', '.renewable', '.gas']) {
-		d3.select(svgID).selectAll(nodeClass).transition('color').duration(300)
-			.attr('fill', colors[nodeClass])
-			.attr('stroke', colors[nodeClass]);
-	}
-
-
-	// Make unselected node class smaller
-	d3.select(svgID).selectAll(className).transition('small').duration(300)
-		.attr('r', function(d) {return Math.max(Math.log(d['total_output']) / 1.5, 2)});
-}
-
 function makeLegend(svgID, legendX, legendY) {
-	let legend = {'Solar': {'color': colors['.solar'], 'id': 'solar'},
-						'Wind': {'color': colors['.wind'], 'id': 'wind'},
-						'Carbon Free': {'color': colors['.renewable'], 'id': 'renewable'},
-					  'Natural Gas': {'color': colors['.gas'], 'id': 'gas'}};
+	let legend = {'Solar': {'class': 'solar'},
+						'Wind': {'class': 'wind'},
+						'Other Sources, Cities': {'class': 'other'}};
 	let x = legendX, y = legendY
 	for (let source in legend) {
 		let group = d3.select(svgID).append('g')
@@ -232,9 +169,7 @@ function makeLegend(svgID, legendX, legendY) {
 
 
 			group.append('rect')
-				.attr('id', legend[source]['id'])
-				.attr('fill', legend[source]['color'])
-				.attr('stroke', colors['unselected'])
+				.attr('class', legend[source]['class'])
 				.attr('stroke-width', 0.8)
 				.attr('width', 10)
 				.attr('height', 10)

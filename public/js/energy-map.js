@@ -120,10 +120,11 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 					.attr('class', 'blackout_node')
 	        .attr('cx', function (d) { return d['long']})
 	        .attr('cy', function (d) { return d['lat']})
-	        .attr('r', 0.02)
-					.attr('stroke-width', '0.01px')
+	        .attr('r', 0.035)
+					.attr('stroke-width', '0')
 					.attr('fill-opacity', '1')
-					.attr('stroke-opacity', '1');
+					.attr('stroke-opacity', '1')
+					.attr('fill', 'orange');
 
 		if (edgeDataFile !== 'none') {
 				d3.csv(edgeDataFile).then(function(data) {
@@ -134,11 +135,13 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 						edge['id'] = idPrefix + 'Edge' + edgeData['Line number'];
 						edge['from'] = idPrefix + edgeData['From node #'];
 						edge['to'] = idPrefix + edgeData['To node #'];
-						edge['class'] = 'stage1_' + edgeData['Stage 1'];
-						edge['class'] += ' stage2_' + edgeData['Stage 2'];
-						edge['class'] += ' stage3_' + edgeData['Stage 3'];
-						edge['class'] += ' stage4_' + edgeData['Stage 4'];
-						edge['class'] += ' stage5_' + edgeData['Stage 5'];
+						edge['class'] = 'blackout_edge';
+
+						for (let i = 1; i < 6; i++) {
+							edge['class'] += ' stage' + i + '_' + edgeData['Stage ' + i];
+							d3.select('#' + edge['from']).classed('stage' + i + '_' + edgeData['Stage ' + i], true);
+							d3.select('#' + edge['to']).classed('stage' + i + '_' + edgeData['Stage ' + i], true);
+						}
 						edgeList.push(edge);
 					}
 
@@ -151,10 +154,12 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 								.attr('y1', function (d) { return $('#' + d['from']).attr('cy')})
 								.attr('x2', function (d) { return $('#' + d['to']).attr('cx')})
 								.attr('y2', function (d) { return $('#' + d['to']).attr('cy')})
-								.attr('stroke-width', '0.01px')
+								.attr('stroke-width', '0.02px')
 								.attr('stroke', 'white');
 						// Raise nodes to be drawn on top of edges.
 						d3.select(svgID).selectAll('.blackout_node').raise();
+
+						d3.select(svgID).on('click', cycleBlackout);
 				});
 
 
@@ -222,6 +227,18 @@ function makeEdges(svgID, data, weightedEdges) {
 
 		// Raise nodes to be drawn on top of edges.
 		d3.select(svgID).selectAll('.node').raise();
+}
+
+let blackoutStage = 1;
+function cycleBlackout() {
+	d3.selectAll('.stage' + blackoutStage + '_0').attr('stroke', '#222');
+	d3.selectAll('.stage' + blackoutStage + '_0').attr('fill', '#222');
+	blackoutStage++;
+	if (blackoutStage == 7) {
+		blackoutStage = 1;
+		d3.selectAll('.blackout_edge').attr('stroke', 'white');
+		d3.selectAll('.blackout_node').attr('fill', 'orange');
+	}
 }
 
 function makeLegend(svgID, legendX, legendY) {

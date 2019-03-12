@@ -83,10 +83,11 @@
 }
 
 .blackout_node {
-  fill: yellow;
-  stroke: yellow;
+  -webkit-transition: stroke 0.5s;
+  transition: stroke 0.5s;
 }
 
 .blackout_edge {
-  stroke: yellow;
+  -webkit-transition: stroke 0.5s;
+  transition: stroke 0.5s;
 }

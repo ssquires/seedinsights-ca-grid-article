@@ -78,6 +78,8 @@ function parseDataFile(idPrefix, svgID, dataFile, filterTo='none', edgeDataFile=
 				nodeList.push(node);
 		}
 		makeNodes(svgID, nodeList, filterTo);
+		// Make chart title
+
 		if (edgeDataFile !== 'none') {
 				d3.csv(edgeDataFile).then(function(data) {
 					let edgeList = [];
@@ -243,6 +245,18 @@ function makeEdges(svgID, data, weightedEdges) {
 
 		// Raise nodes to be drawn on top of edges.
 		d3.select(svgID).selectAll('.node').raise();
+}
+
+function addTitle(svgID, title) {
+	let titleText = d3.select(svgID).append('text')
+		.html(title)
+		.attr('font-size', 18)
+		.attr('font-family', 'Open Sans');
+	let bbox = titleText.node().getBBox();
+	let viewBox = d3.select(svgID).attr('viewBox').split(' ')
+	let totalWidth = Number(viewBox[2]) / 2 + Number(viewBox[0])
+	titleText.attr('x', totalWidth - bbox.width / 2);
+	titleText.attr('y', -20);
 }
 
 let blackoutStage = 1;

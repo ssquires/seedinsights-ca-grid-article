@@ -73,14 +73,14 @@
   <h2>Modeling The Power Grid: Design Matters</h2>
   <p>Using statistical methods, researchers are able to predict which power lines in a grid are most likely to fail. They model a power grid as a network of places where electricity is produced (e.g. generators) and consumed (e.g. cities), which are connected by transmission lines.</p>
   <hr class='start-viz'>
-  <svg id='graph-map-1' class='graph-map' x='0' y='0' width='100%' viewBox='30 -15 400 300'>
+  <svg id='graph-map-1' class='graph-map' x='0' y='0' width='100%' viewBox='30 -40 400 300'>
 
   </svg>
   <hr class='end-viz'>
   <p>The model assumes that the power supplied by each generator and the power consumption in each city/district both fluctuate randomly around a set average value. This results in random fluctuations in the power flowing through the lines connecting the nodes. If the power flowing through a line exceeds its capacity, it may overload and “fail”. </p>
   <p>Using high-dimensional joint distributions for fluctuations in power, the model is able to identify the lines that are most prone to failure. Understanding which transmission lines are most vulnerable allows preventative actions to be taken to prevent cascading failures and resulting blackouts. In the map below, the failure risk of each transmission line is indicated by its color.</p>
   <hr class='start-viz'>
-  <svg id='graph-map-2-risk' class='graph-map' x='0' y='0' width='100%' viewBox='30 -15 400 300'>
+  <svg id='graph-map-2-risk' class='graph-map' x='0' y='0' width='100%' viewBox='30 -40 400 300'>
 
   </svg>
   <hr class='end-viz'>
@@ -88,12 +88,12 @@
   <p>As California looks to expand its renewable energy production, a seemingly natural strategy could be to enlarge current wind and solar farms, since they have likely purposely been placed in windy/sunny areas where they can be highly effective. However, applying the model to this situation shows that this approach worsens the risk of failure.</p>
   <p>This happens for precisely the reasons discussed in the previous section--if more wind turbines are added to a small geographical area, energy output will increase more steeply when the wind gusts, leading to a greater risk of overload. If the infrastructure connecting these farms to nearby cities is not upgraded accordingly, risk rises even higher.</p>
   <hr class='start-viz'>
-  <svg id='graph-map-3-bad-config' class='graph-map' x='0' y='0' width='100%' viewBox='30 -15 400 300'>
+  <svg id='graph-map-3-bad-config' class='graph-map' x='0' y='0' width='100%' viewBox='30 -40 400 300'>
   </svg>
   <hr class='end-viz'>
   <p>By contrast, a grid structure where renewables are less clustered together results in a more reliable and less failure-prone network. This approach is also more economical, in that higher reliability standards can be achieved with fewer infrastructure investments.</p>
   <hr class='start-viz'>
-  <svg id='graph-map-4-good-config' class='graph-map' x='0' y='0' width='100%' viewBox='30 -15 400 300'>
+  <svg id='graph-map-4-good-config' class='graph-map' x='0' y='0' width='100%' viewBox='30 -40 400 300'>
   </svg>
   <hr class='end-viz'>
 

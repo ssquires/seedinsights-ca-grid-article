@@ -158,8 +158,24 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 								.attr('stroke', 'white');
 						// Raise nodes to be drawn on top of edges.
 						d3.select(svgID).selectAll('.blackout_node').raise();
-
 						d3.select(svgID).on('click', cycleBlackout);
+
+						let stagesText = ['A blackout can start with the failure of a single line.',
+															'As power redistributes through the grid, more lines overload and fail.',
+															'These failures in turn cause more failures, and large areas can lose power.'];
+						for (let i = 0; i < stagesText.length; i++) {
+							d3.select(svgID)
+								.append('text')
+								.attr('id', idPrefix + '_text' + i)
+								.attr('class', idPrefix + '_text')
+								.html(stagesText[i])
+								.attr('x', -0.2)
+								.attr('y', -2.3)
+								.attr('w', 0.5)
+								.style('text-anchor', 'middle')
+								.style('font', '0.15px Open Sans')
+								.style('fill', '#333')
+						}
 				});
 
 
@@ -233,12 +249,25 @@ let blackoutStage = 1;
 function cycleBlackout() {
 	d3.selectAll('.stage' + blackoutStage + '_0').attr('stroke', '#222');
 	d3.selectAll('.stage' + blackoutStage + '_0').attr('fill', '#222');
-	blackoutStage++;
-	if (blackoutStage == 7) {
-		blackoutStage = 1;
+
+	if (blackoutStage == 1) {
+		d3.select('#blackout_text0').raise().transition().style('fill', 'white').duration(500);
+	} else if (blackoutStage == 3) {
+		d3.select('#blackout_text0').transition().style('fill', '#333').duration(500);
+		setTimeout(function() {d3.select('#blackout_text1').raise().transition().style('fill', 'white').duration(500)}, 500);
+	} else if (blackoutStage == 5) {
+		d3.select('#blackout_text1').transition().style('fill', '#333').duration(500);
+		setTimeout(function() {d3.select('#blackout_text2').raise().transition().style('fill', 'white').duration(500)}, 500);
+	}
+	if (blackoutStage == 6) {
+		blackoutStage = 0;
 		d3.selectAll('.blackout_edge').attr('stroke', 'white');
 		d3.selectAll('.blackout_node').attr('fill', 'orange');
+		d3.select('#blackout_text2').transition().style('fill', '#333').duration(500);
 	}
+
+	blackoutStage++;
+
 }
 
 function makeLegend(svgID, legendX, legendY) {

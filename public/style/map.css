@@ -91,3 +91,11 @@
   -webkit-transition: stroke 0.5s;
   transition: stroke 0.5s;
 }
+
+svg text {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

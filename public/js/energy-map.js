@@ -122,11 +122,11 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 					.attr('class', 'blackout_node')
 	        .attr('cx', function (d) { return d['long']})
 	        .attr('cy', function (d) { return d['lat']})
-	        .attr('r', 0.035)
+	        .attr('r', 0.02)
 					.attr('stroke-width', '0')
 					.attr('fill-opacity', '1')
 					.attr('stroke-opacity', '1')
-					.attr('fill', 'orange');
+					.attr('fill', '#333');
 
 		if (edgeDataFile !== 'none') {
 				d3.csv(edgeDataFile).then(function(data) {
@@ -139,13 +139,72 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 						edge['to'] = idPrefix + edgeData['To node #'];
 						edge['class'] = 'blackout_edge';
 
-						for (let i = 1; i < 6; i++) {
-							edge['class'] += ' stage' + i + '_' + edgeData['Stage ' + i];
-							d3.select('#' + edge['from']).classed('stage' + i + '_' + edgeData['Stage ' + i], true);
-							d3.select('#' + edge['to']).classed('stage' + i + '_' + edgeData['Stage ' + i], true);
+						let allStages = edgeData['Stage 1'] + edgeData['Stage 2'] +
+								edgeData['Stage 3'] + edgeData['Stage 4'] + edgeData['Stage 5'];
+						let failureStage = allStages.indexOf('0') + 1;
+
+						edge['class'] += ' stage' + failureStage + '_0';
+
+
+						let fromNode = d3.select('#' + edge['from']);
+						let toNode = d3.select('#' + edge['to']);
+
+						if (failureStage > 0) {
+							if (failureStage == 2) {
+								if (!fromNode.classed('node_stage1_0')) {
+									fromNode.classed('node_stage' + failureStage + '_0', true);
+								}
+								if (!toNode.classed('node_stage1_0')) {
+									toNode.classed('node_stage' + failureStage + '_0', true);
+								}
+							}
+							if (failureStage == 3) {
+								if (!fromNode.classed('node_stage1_0') && !fromNode.classed('node_stage2_0')) {
+									fromNode.classed('node_stage' + failureStage + '_0', true);
+								}
+								if (!toNode.classed('node_stage1_0') && !toNode.classed('node_stage2_0')) {
+									toNode.classed('node_stage' + failureStage + '_0', true);
+								}
+							}
+							if (failureStage == 4) {
+								if (!fromNode.classed('node_stage1_0') && !fromNode.classed('node_stage2_0') && !fromNode.classed('node_stage3_0')) {
+									fromNode.classed('node_stage' + failureStage + '_0', true);
+								}
+								if (!toNode.classed('node_stage1_0') && !toNode.classed('node_stage2_0') && !toNode.classed('node_stage3_0')) {
+									toNode.classed('node_stage' + failureStage + '_0', true);
+								}
+							}
+							if (failureStage == 5) {
+								if (!fromNode.classed('node_stage1_0') && !fromNode.classed('node_stage2_0') && !fromNode.classed('node_stage3_0') && !fromNode.classed('node_stage4_0')) {
+									fromNode.classed('node_stage' + failureStage + '_0', true);
+								}
+								if (!toNode.classed('node_stage1_0') && !toNode.classed('node_stage2_0') && !toNode.classed('node_stage3_0') && !toNode.classed('node_stage4_0')) {
+									toNode.classed('node_stage' + failureStage + '_0', true);
+								}
+							}
+
+
+							if (failureStage < 5) {
+								fromNode.classed('node_stage5_0', false);
+								toNode.classed('node_stage5_0', false);
+							}
+							if (failureStage < 4) {
+								fromNode.classed('node_stage4_0', false);
+								toNode.classed('node_stage4_0', false);
+							}
+							if (failureStage < 3) {
+								fromNode.classed('node_stage3_0', false);
+								toNode.classed('node_stage3_0', false);
+							}
+							if (failureStage < 2) {
+								fromNode.classed('node_stage2_0', false);
+								toNode.classed('node_stage2_0', false);
+							}
 						}
 						edgeList.push(edge);
 					}
+
+
 
 					d3.select(svgID).selectAll('.edge')
 								.data(edgeList)
@@ -158,8 +217,7 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 								.attr('y2', function (d) { return $('#' + d['to']).attr('cy')})
 								.attr('stroke-width', '0.02px')
 								.attr('stroke', 'white');
-						// Raise nodes to be drawn on top of edges.
-						d3.select(svgID).selectAll('.blackout_node').raise();
+
 						d3.select(svgID).on('click', cycleBlackout);
 
 						let stagesText = ['A blackout can start with the failure of a single line.',
@@ -261,26 +319,30 @@ function addTitle(svgID, title) {
 
 let blackoutStage = 1;
 function cycleBlackout() {
-	d3.selectAll('.stage' + blackoutStage + '_0').attr('stroke', '#222');
-	d3.selectAll('.stage' + blackoutStage + '_0').attr('fill', '#222');
+	$('.stage' + blackoutStage + '_0').css('stroke', 'red');
+	setTimeout(function() {
+		$('.stage' + blackoutStage + '_0').css('stroke', '#333');
 
-	if (blackoutStage == 1) {
-		d3.select('#blackout_text0').raise().transition().style('fill', 'white').duration(500);
-	} else if (blackoutStage == 3) {
-		d3.select('#blackout_text0').transition().style('fill', '#333').duration(500);
-		setTimeout(function() {d3.select('#blackout_text1').raise().transition().style('fill', 'white').duration(500)}, 500);
-	} else if (blackoutStage == 5) {
-		d3.select('#blackout_text1').transition().style('fill', '#333').duration(500);
-		setTimeout(function() {d3.select('#blackout_text2').raise().transition().style('fill', 'white').duration(500)}, 500);
-	}
-	if (blackoutStage == 6) {
-		blackoutStage = 0;
-		d3.selectAll('.blackout_edge').attr('stroke', 'white');
-		d3.selectAll('.blackout_node').attr('fill', 'orange');
-		d3.select('#blackout_text2').transition().style('fill', '#333').duration(500);
-	}
+		if (blackoutStage == 1) {
+			d3.select('#blackout_text0').raise().transition().style('fill', 'white').duration(500);
+		} else if (blackoutStage == 3) {
+			d3.select('#blackout_text0').transition().style('fill', '#333').duration(500);
+			setTimeout(function() {d3.select('#blackout_text1').raise().transition().style('fill', 'white').duration(500)}, 500);
+		} else if (blackoutStage == 5) {
+			d3.select('#blackout_text1').transition().style('fill', '#333').duration(500);
+			setTimeout(function() {d3.select('#blackout_text2').raise().transition().style('fill', 'white').duration(500)}, 500);
+		}
+		if (blackoutStage == 6) {
+			blackoutStage = 0;
+			$('.blackout_edge').css('stroke', 'white');
+			d3.select('#blackout_text2').transition().style('fill', '#333').duration(500);
+		}
+		blackoutStage++;
+	}, 500);
 
-	blackoutStage++;
+
+
+
 
 }
 

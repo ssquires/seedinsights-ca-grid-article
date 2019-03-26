@@ -80,7 +80,8 @@ function makeLineChart(containerID,
   let titleText = chart.append('text')
     .html(chartTitle)
     .attr('font-size', 20)
-    .attr('font-family', 'Open Sans');
+    .attr('font-family', 'Open Sans')
+    .attr('class', 'title');
   let bbox = titleText.node().getBBox();
   titleText.attr('x', xLength / 2 - bbox.width / 2);
 
@@ -89,7 +90,8 @@ function makeLineChart(containerID,
     .html(xAxisTitle)
     .attr('font-size', 16)
     .attr('font-family', 'Open Sans')
-    .attr('y', xAxisLevel + 45);
+    .attr('y', xAxisLevel + 45)
+    .attr('class', 'axislabel');
   let xbbox = xText.node().getBBox();
   xText.attr('x', xLength / 2 - xbbox.width / 2);
 
@@ -98,7 +100,8 @@ function makeLineChart(containerID,
     .html(yAxisTitle)
     .attr('font-size', 16)
     .attr('font-family', 'Open Sans')
-    .attr('transform', 'rotate(270)');
+    .attr('transform', 'rotate(270)')
+    .attr('class', 'axislabel');
   let ybbox = yText.node().getBBox();
   if (yLabels.length > 0) {
     yText.attr('y', '-40');

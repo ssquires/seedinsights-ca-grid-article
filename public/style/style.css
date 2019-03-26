@@ -143,6 +143,11 @@ svg .title {
   font-size: 18px;
 }
 
+svg .axislabel {
+  font-family: Roboto;
+  font-size: 16px;
+}
+
 .footnote {
   font-size: 12px;
   font-style: italic;

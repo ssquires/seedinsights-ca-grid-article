@@ -124,7 +124,7 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 	        .attr('cy', function (d) { return d['lat']})
 	        .attr('r', 0.02)
 					.attr('stroke-width', '0')
-					.attr('fill-opacity', '1')
+					.attr('fill-opacity', '0')
 					.attr('stroke-opacity', '1')
 					.attr('fill', '#333');
 
@@ -218,7 +218,7 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 								.attr('stroke-width', '0.02px')
 								.attr('stroke', 'white');
 
-						d3.select(svgID).on('click', cycleBlackout);
+						setInterval(cycleBlackout, 2500);
 
 						let stagesText = ['A blackout can start with the failure of a single line.',
 															'As power redistributes through the grid, more lines overload and fail.',
@@ -236,6 +236,8 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 								.style('font', '0.15px Open Sans')
 								.style('fill', '#333')
 						}
+
+						d3.select('#' + idPrefix + '_text0').raise().style('fill', 'white');
 				});
 
 
@@ -319,16 +321,17 @@ function addTitle(svgID, title) {
 
 let blackoutStage = 1;
 function cycleBlackout() {
+	d3.selectAll('.stage' + blackoutStage + '_0').lower();
 	$('.stage' + blackoutStage + '_0').css('stroke', 'red');
 	setTimeout(function() {
 		$('.stage' + blackoutStage + '_0').css('stroke', '#333');
 
 		if (blackoutStage == 1) {
 			d3.select('#blackout_text0').raise().transition().style('fill', 'white').duration(500);
-		} else if (blackoutStage == 3) {
+		} else if (blackoutStage == 2) {
 			d3.select('#blackout_text0').transition().style('fill', '#333').duration(500);
 			setTimeout(function() {d3.select('#blackout_text1').raise().transition().style('fill', 'white').duration(500)}, 500);
-		} else if (blackoutStage == 5) {
+		} else if (blackoutStage == 4) {
 			d3.select('#blackout_text1').transition().style('fill', '#333').duration(500);
 			setTimeout(function() {d3.select('#blackout_text2').raise().transition().style('fill', 'white').duration(500)}, 500);
 		}

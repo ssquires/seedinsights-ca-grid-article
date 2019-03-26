@@ -14,7 +14,7 @@ function drawMaps() {
         .attr("fill", "#F5F5F5");
     makeLegend('#graph-map-1', 50, 210);
     parseDataFile('map-1', '#graph-map-1', 'placeholders_nodes.csv', 'none', 'placeholders_lines.csv', false);
-    addTitle('#graph-map-1', 'A Simplified Power Network');
+    addTitle('#graph-map-1', 'A Simplified Transmission Network');
 
     d3.select('#graph-map-2-risk').selectAll('.ca')
         .data(data)

@@ -303,15 +303,20 @@ function makeEdges(svgID, data, weightedEdges) {
 				.attr('y2', function (d) { return $('#' + d['to']).attr('cy')})
 				.attr('stroke-width', '1.5px');
 
-		// Raise nodes to be drawn on top of edges.
-		d3.select(svgID).selectAll('.node').raise();
+		// Raise nodes to be drawn on top of edges, and put everything below
+		// additional annotations.
+		d3.select(svgID).selectAll('.node').lower();
+		d3.select(svgID).selectAll('.edge').lower();
+		d3.select(svgID).selectAll('path').lower();
+
 }
 
 function addTitle(svgID, title) {
 	let titleText = d3.select(svgID).append('text')
 		.html(title)
 		.attr('font-size', 18)
-		.attr('font-family', 'Open Sans');
+		.attr('font-family', 'Open Sans')
+		.attr('class', 'title');
 	let bbox = titleText.node().getBBox();
 	let viewBox = d3.select(svgID).attr('viewBox').split(' ')
 	let totalWidth = Number(viewBox[2]) / 2 + Number(viewBox[0])

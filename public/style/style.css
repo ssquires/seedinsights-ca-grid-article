@@ -133,6 +133,16 @@ hr {
   border: 0;
 }
 
+svg text {
+  font-family: Roboto;
+  font-size: 10px;
+}
+
+svg .title {
+  font-family: Roboto;
+  font-size: 18px;
+}
+
 .footnote {
   font-size: 12px;
   font-style: italic;

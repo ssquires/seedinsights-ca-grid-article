@@ -76,7 +76,14 @@
   <p>Using statistical methods, researchers are able to predict which power lines in a grid are most likely to fail. They model a power grid as a network of places where electricity is produced (e.g. generators) and consumed (e.g. cities), which are connected by transmission lines.</p>
   <hr class='start-viz'>
   <svg id='graph-map-1' class='graph-map' x='0' y='0' width='100%' viewBox='30 -40 400 300'>
-
+    <text x='173' y='40'>Wind farms are shown in blue.</text>
+    <line x1='97' y1='106' x2='170' y2='40' stroke='#333' stroke-width='0.5px'/>
+    <text x='223' y='100'>Solar farms are highlighted in orange.</text>
+    <line x1='156' y1='178' x2='220' y2='100' stroke='#333' stroke-width='0.5px'/>
+    <text x='273' y='160'>Cities, industrial districts, and</text>
+    <text x='273' y='170'>conventional sources of power</text>
+    <text x='273' y='180'>are shown in gray.</text>
+    <line x1='207' y1='216' x2='270' y2='160' stroke='#333' stroke-width='0.5px'/>
   </svg>
   <hr class='end-viz'>
   <p>The model assumes that the power supplied by each generator and the power consumption in each city/district both fluctuate randomly around a set average value. This results in random fluctuations in the power flowing through the lines connecting the nodes. If the power flowing through a line exceeds its capacity, it may overload and “fail”. </p>

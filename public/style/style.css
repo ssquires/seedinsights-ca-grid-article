@@ -113,6 +113,11 @@ h2 {
   padding-top: 50px;
 }
 
+h3 {
+  font-family: "Roboto";
+  font-size: 22px;
+  margin-top: 15px;
+}
 p, li{
     font-family: "Open Sans";
     font-size: 18px;
@@ -126,15 +131,23 @@ ul {
 
 hr {
   border: 0;
-  border-top: 1px solid #DDD;
+}
+
+.footnote {
+  font-size: 12px;
+  font-style: italic;
 }
 
 .start-viz {
   margin-top: 25px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #DDD;
 }
 
 .end-viz {
   margin-bottom: 25px;
+  margin-top: 10px;
+  border-top: 1px solid #DDD;
 }
 
 #article {

@@ -1,7 +1,7 @@
 const mapWidth = 270, mapHeight = 270;
 const scale = 1215;
 const projection = d3.geoMercator()
-                .center([-119.3, 37.6])
+                .center([-117, 37.6])
                 .scale(scale)
                 .translate([mapWidth/2 + 15, mapHeight/2 - 15]);
 

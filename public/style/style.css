@@ -77,7 +77,7 @@ body {
 #title-div p {
     color: white;
     margin-top: 50px;
-    font-family: "Open Sans";
+    font-family: "Libre Franklin";
 }
 
 .opacity-screen-2 {
@@ -119,10 +119,11 @@ h3 {
   margin-top: 15px;
 }
 p, li{
-    font-family: "Open Sans";
+    font-family: "Libre Franklin";
     font-size: 18px;
     padding-top: 10px;
     padding-bottom: 10px;
+    line-height: 1.4em;
 }
 
 ul {

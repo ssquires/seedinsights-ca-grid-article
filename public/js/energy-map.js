@@ -37,16 +37,10 @@ function parseDataFile(idPrefix, svgID, dataFile, filterTo='none', edgeDataFile=
 					node['wind'] = nodeData['wind'];
 				}
 
-				if (nodeData['Carbon free (includes biomass)']) {
-					node['carbon_neutral'] = nodeData['Carbon free (includes biomass)'];
+				if (nodeData['Other']) {
+					node['other'] = nodeData['Other'];
 				} else {
-					node['carbon_neutral'] = nodeData['carbon f&n'];
-				}
-
-				if (nodeData['Non-renewables']) {
-					node['non_renewables'] = nodeData['Non-renewables'];
-				} else {
-					node['non_renewables'] = nodeData['nor renewables'];
+					node['other'] = nodeData['other'];
 				}
 
 				if (nodeData['description']) {
@@ -58,16 +52,14 @@ function parseDataFile(idPrefix, svgID, dataFile, filterTo='none', edgeDataFile=
 				if (nodeData['Total generation']) {
 					node['total_output'] = nodeData['Total generation'];
 				} else {
-					node['total_output'] = Number(node['solar']) + Number(node['wind']) + Number(node['non_renewables']) + Number(node['carbon_neutral'])
+					node['total_output'] = Number(node['solar']) + Number(node['wind']) + Number(node['other'])
 				}
 
-				let solar = node['solar'], wind = node['wind'], cf = node['carbon_neutral'], nr = node['non_renewables'];
-				if (solar > Math.max(wind, cf, nr)) {
+				let solar = node['solar'], wind = node['wind'], other = node['other'];
+				if (solar > Math.max(wind, other)) {
 					node['class'] = 'solar node';
-				} else if (wind > Math.max(solar, cf, nr)) {
+				} else if (wind > Math.max(solar, other)) {
 					node['class'] = 'wind node';
-				} else if (cf > Math.max(solar, wind, nr)) {
-					node['class'] = 'other node';
 				} else {
 					node['class'] = 'other node';
 				}
@@ -77,7 +69,7 @@ function parseDataFile(idPrefix, svgID, dataFile, filterTo='none', edgeDataFile=
 
 				nodeList.push(node);
 		}
-		makeNodes(svgID, nodeList, filterTo);
+		makeNodes(svgID, nodeList);
 		// Make chart title
 
 		if (edgeDataFile !== 'none') {
@@ -233,7 +225,7 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 								.attr('y', -2.3)
 								.attr('w', 0.5)
 								.style('text-anchor', 'middle')
-								.style('font', '0.15px Open Sans')
+								.style('font', '0.15px Libre Franklin')
 								.style('fill', '#333')
 						}
 
@@ -245,21 +237,16 @@ function parseBlackoutDataFile(idPrefix, svgID, dataFile, edgeDataFile) {
 	});
 }
 
-function makeNodes(svgID, data, filterTo) {
+function makeNodes(svgID, data) {
   	// Create a circle on the map for each node.
 	  d3.select(svgID).selectAll('.node')
-	        .data(data.filter(function(d) {
-							if (filterTo == 'solar') {
-								return d['class'].indexOf('solar') >= 0 && Number(d['total_output']) >= 0.0;
-							}
-	            return Number(d['total_output']) >= 0.0;
-	        }))
+	        .data(data)
 	        .enter().append('circle')
 					.attr('id', function (d) { return d['id']})
 					.attr('class', function (d) { return d['class']})
 	        .attr('cx', function (d) { return projection([d['long'], d['lat']])[0]})
 	        .attr('cy', function (d) { return projection([d['long'], d['lat']])[1]})
-	        .attr('r', function (d) { return Math.max(Math.log(d['total_output']) / 1.5, 2)})
+	        .attr('r', function (d) { return 3; })
 					.attr('stroke-width', '0.8px')
 					.attr('fill-opacity', '1')
 					.attr('stroke-opacity', '1');
@@ -357,12 +344,18 @@ function cycleBlackout() {
 function makeLegend(svgID, legendX, legendY) {
 	let legend = {'Solar': {'class': 'solar'},
 						'Wind': {'class': 'wind'},
-						'Other Sources, Cities': {'class': 'other'}};
+						'Cities, Other': {'class': 'other'}};
 	let x = legendX, y = legendY
 	for (let source in legend) {
 		let group = d3.select(svgID).append('g')
 			.attr('id', legend[source]['id'])
 
+		group.append('rect')
+			.attr('fill', '#EEE')
+			.attr('x', x - 5)
+			.attr('y', y - 5)
+			.attr('width', 80)
+			.attr('height', 40);
 
 			group.append('rect')
 				.attr('class', legend[source]['class'])

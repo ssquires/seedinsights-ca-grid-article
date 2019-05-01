@@ -12,8 +12,7 @@ function drawMaps() {
         .attr("stroke", "#BBB")
         .attr("stroke-width", "0.8px")
         .attr("fill", "#F5F5F5");
-    makeLegend('#graph-map-1', 50, 210);
-    parseDataFile('map-1', '#graph-map-1', 'placeholders_nodes.csv', 'none', 'placeholders_lines.csv', false);
+    parseDataFile('map-1', '#graph-map-1', 'model_nodes_basic.csv', 'none', 'model_lines_basic.csv', false);
     addTitle('#graph-map-1', 'A Simplified Transmission Network');
 
     d3.select('#graph-map-2-risk').selectAll('.ca')
@@ -23,8 +22,7 @@ function drawMaps() {
         .attr("stroke", "#BBB")
         .attr("stroke-width", "0.8px")
         .attr("fill", "#F5F5F5");
-    makeLegend('#graph-map-2-risk', 50, 210);
-    parseDataFile('map-2', '#graph-map-2-risk', 'placeholders_nodes.csv', 'none', 'placeholders_lines.csv', true);
+    parseDataFile('map-2', '#graph-map-2-risk', 'model_nodes_basic.csv', 'none', 'model_lines_basic.csv', true);
     addTitle('#graph-map-2-risk', 'Measuring Failure Risk');
 
     d3.select('#graph-map-3-bad-config').selectAll('.ca')
@@ -34,8 +32,7 @@ function drawMaps() {
         .attr("stroke", "#BBB")
         .attr("stroke-width", "0.8px")
         .attr("fill", "#F5F5F5");
-    makeLegend('#graph-map-3-bad-config', 50, 210);
-    parseDataFile('map-3', '#graph-map-3-bad-config', 'placeholders_nodes_bad_config.csv', 'none', 'placeholders_lines_bad_config.csv', true);
+    parseDataFile('map-3', '#graph-map-3-bad-config', 'model_nodes_bad.csv', 'none', 'model_lines_bad.csv', true);
     addTitle('#graph-map-3-bad-config', 'A High-Risk Choice');
 
     d3.select('#graph-map-4-good-config').selectAll('.ca')
@@ -45,8 +42,7 @@ function drawMaps() {
         .attr("stroke", "#BBB")
         .attr("stroke-width", "0.8px")
         .attr("fill", "#F5F5F5");
-    makeLegend('#graph-map-4-good-config', 50, 210);
-    parseDataFile('map-4', '#graph-map-4-good-config', 'placeholders_nodes_good_config.csv', 'none', 'placeholders_lines_good_config.csv', true);
+    parseDataFile('map-4', '#graph-map-4-good-config', 'model_nodes_good.csv', 'none', 'model_lines_good.csv', true);
     addTitle('#graph-map-4-good-config', 'A Low-Risk Choice');
 
     d3.select('#blackout').selectAll('.ca')

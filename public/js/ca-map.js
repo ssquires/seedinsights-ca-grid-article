@@ -45,13 +45,6 @@ function drawMaps() {
     parseDataFile('map-4', '#graph-map-4-good-config', 'model_nodes_good.csv', 'none', 'model_lines_good.csv', true);
     addTitle('#graph-map-4-good-config', 'A Low-Risk Choice');
 
-    d3.select('#blackout').selectAll('.ca')
-      .data(data)
-      .enter().append('path')
-      .attr('d', path)
-      .attr("stroke", "#445")
-      .attr("stroke-width", "0.8px")
-      .attr("fill", "#445");
     parseBlackoutDataFile('blackout', '#blackout', 'blackoutnodes.csv', 'blackoutlines.csv');
   });
 
